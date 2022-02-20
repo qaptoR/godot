@@ -1057,6 +1057,10 @@ void ItemList::_notification(int p_what) {
 						}
 					}
 
+                    // PR TODO
+                    // if (items[i].text != "") {
+                    //     Size2 s = font->get_string_size(items[i].text);
+
 					if (!items[i].text.is_empty()) {
 						int max_width = -1;
 						if (fixed_column_width) {
@@ -1107,6 +1111,7 @@ void ItemList::_notification(int p_what) {
 					Vector2 ofs;
 					int col = 0;
 					int max_h = 0;
+                    int max_w = 0;
 					separators.clear();
 					for (int i = 0; i < items.size(); i++) {
 						if (current_columns > 1 && items[i].rect_cache.size.width + ofs.x > fit_size) {
@@ -1120,6 +1125,7 @@ void ItemList::_notification(int p_what) {
 							items.write[i].rect_cache.size.x = max_column_width;
 						}
 						items.write[i].rect_cache.position = ofs;
+                        max_w = MAX(max_w, items[i].rect_cache.size.x);
 						max_h = MAX(max_h, items[i].rect_cache.size.y);
 						ofs.x += items[i].rect_cache.size.x + theme_cache.h_separation;
 						col++;
@@ -1132,7 +1138,7 @@ void ItemList::_notification(int p_what) {
 								items.write[j].rect_cache.size.y = max_h;
 							}
 
-							ofs.x = 0;
+							ofs.x = 0; // TODO make match ofs.y
 							ofs.y += max_h + theme_cache.v_separation;
 							col = 0;
 							max_h = 0;
@@ -1142,10 +1148,13 @@ void ItemList::_notification(int p_what) {
 					for (int j = items.size() - 1; j >= 0 && col > 0; j--, col--) {
 						items.write[j].rect_cache.size.y = max_h;
 					}
-
+                    
 					if (all_fit) {
 						float page = MAX(0, size.height - theme_cache.panel_style->get_minimum_size().height);
 						float max = MAX(page, ofs.y + max_h);
+                        if (auto_width) {
+                            auto_width_value = ofs.x + max_w + theme_cache.panel_style->get_minimum_size().width;
+                        }
 						if (auto_height) {
 							auto_height_value = ofs.y + max_h + theme_cache.panel_style->get_minimum_size().height;
 						}
@@ -1578,14 +1587,28 @@ bool ItemList::is_anything_selected() {
 }
 
 Size2 ItemList::get_minimum_size() const {
-	if (auto_height) {
-		return Size2(0, auto_height_value);
+	if (auto_width || auto_height) {
+		return Size2(auto_width_value, auto_height_value);
 	}
 	return Size2();
 }
 
 void ItemList::set_autoscroll_to_bottom(const bool p_enable) {
 	do_autoscroll_to_bottom = p_enable;
+}
+
+void ItemList::set_auto_width(bool p_enable) {
+    if (auto_width == p_enable) {
+        return;
+    }
+
+	auto_width = p_enable;
+	shape_changed = true;
+	queue_redraw();
+}
+
+bool ItemList::has_auto_width() const {
+	return auto_width;
 }
 
 void ItemList::set_auto_height(bool p_enable) {
@@ -1787,6 +1810,9 @@ void ItemList::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_allow_reselect", "allow"), &ItemList::set_allow_reselect);
 	ClassDB::bind_method(D_METHOD("get_allow_reselect"), &ItemList::get_allow_reselect);
 
+    ClassDB::bind_method(D_METHOD("set_auto_width", "enable"), &ItemList::set_auto_width);
+	ClassDB::bind_method(D_METHOD("has_auto_width"), &ItemList::has_auto_width);
+
 	ClassDB::bind_method(D_METHOD("set_auto_height", "enable"), &ItemList::set_auto_height);
 	ClassDB::bind_method(D_METHOD("has_auto_height"), &ItemList::has_auto_height);
 
@@ -1805,6 +1831,7 @@ void ItemList::_bind_methods() {
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "allow_reselect"), "set_allow_reselect", "get_allow_reselect");
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "allow_rmb_select"), "set_allow_rmb_select", "get_allow_rmb_select");
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "max_text_lines", PROPERTY_HINT_RANGE, "1,10,1,or_greater"), "set_max_text_lines", "get_max_text_lines");
+    ADD_PROPERTY(PropertyInfo(Variant::BOOL, "auto_width"), "set_auto_width", "has_auto_width");
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "auto_height"), "set_auto_height", "has_auto_height");
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "text_overrun_behavior", PROPERTY_HINT_ENUM, "Trim Nothing,Trim Characters,Trim Words,Ellipsis,Word Ellipsis"), "set_text_overrun_behavior", "get_text_overrun_behavior");
 	ADD_ARRAY_COUNT("Items", "item_count", "set_item_count", "get_item_count", "item_");
