@@ -1,0 +1,294 @@
+285: ('#e0e0e0', {'icon_file.svg', 'icon_joy_button.svg', 'icon_texture_3_d.svg', 'icon_snap.svg', 'icon_debug_step.svg', 'icon_GUI_progress_bar.svg', 'icon_progress_2.svg', 'icon_track_capture.svg', 'icon_interp_wrap_loop.svg', 'icon_joy_axis.svg', 'icon_key_next.svg', 'icon_curve_texture.svg', 'icon_member_method.svg', 'icon_insert_before.svg', 'icon_panels_2.svg', 'icon_room_bounds.svg', 'icon_play_backwards.svg', 'icon_GUI_mini_checkerboard.svg', 'icon_instance_options.svg', 'icon_mouse.svg', 'icon_GUI_scroll_arrow_left_hl.svg', 'icon_h_t_t_p_request.svg', 'icon_material_preview_cube.svg', 'icon_packed_data_container.svg', 'icon_panels_3.svg', 'icon_pool_vector3_array.svg', 'icon_save.svg', 'icon_group_viewport.svg', 'icon_translation.svg', 'icon_world.svg', 'icon_zoom_reset.svg', 'icon_arrow_left.svg', 'icon_auto_play.svg', 'icon_expand_bottom_dock.svg', 'icon_g_i_probe_data.svg', 'icon_tool_connect.svg', 'icon_loop_interpolation.svg', 'icon_pin_pressed.svg', 'icon_interp_wrap_clamp.svg', 'icon_progress_7.svg', 'icon_move_down.svg', 'icon_world_2d.svg', 'icon_debug_next.svg', 'icon_progress_6.svg', 'icon_animation_track_list.svg', 'icon_text_file.svg', 'icon_auto_key.svg', 'icon_arrow_right.svg', 'icon_load.svg', 'icon_object.svg', 'icon_sort.svg', 'icon_folder_medium_thumb.svg', 'icon_track_discrete.svg', 'icon_animation_filter.svg', 'icon_action_cut.svg', 'icon_folder.svg', 'icon_material_preview_light_2.svg', 'icon_pool_color_array.svg', 'icon_insert_after.svg', 'icon_clear.svg', 'icon_new.svg', 'icon_curve_2d.svg', 'icon_multi_edit.svg', 'icon_skeleton_i_k.svg', 'icon_button_group.svg', 'icon_large_texture.svg', 'icon_groups.svg', 'icon_GUI_toggle_off.svg', 'icon_panels_2_alt.svg', 'icon_bit_map.svg', 'icon_fixed_material.svg', 'icon_match_case.svg', 'icon_member_signal.svg', 'icon_progress_1.svg', 'icon_ruler.svg', 'icon_reparent.svg', 'icon_canvas_item.svg', 'icon_edit_resource.svg', 'icon_reload_small.svg', 'icon_2_d.svg', 'icon_issue.svg', 'icon_transition_immediate.svg', 'icon_transition_sync_big.svg', 'icon_rich_text_effect.svg', 'icon_snap_grid.svg', 'icon_canvas_layer.svg', 'icon_unbone.svg', 'icon_pool_string_array.svg', 'icon_array.svg', 'icon_arrow_down.svg', 'icon_audio_bus_bypass.svg', 'icon_audio_stream_player.svg', 'icon_key_bezier_handle.svg', 'icon_baked_lightmap_data.svg', 'icon_zoom_less.svg', 'icon_keyboard_physical.svg', 'icon_tool_select.svg', 'icon_material_preview_light_2_off.svg', 'icon_remove_internal.svg', 'icon_time.svg', 'icon_auto_triangle.svg', 'icon_play.svg', 'icon_rename.svg', 'icon_bucket.svg', 'icon_tool_scale.svg', 'icon_distraction_free.svg', 'icon_member_constant.svg', 'icon_new_root.svg', 'icon_transition_immediate_big.svg', 'icon_atlas_texture.svg', 'icon_rotate_270.svg', 'icon_viewport.svg', 'icon_bake.svg', 'icon_reparent_to_new_node.svg', 'icon_tile_set.svg', 'icon_tool_pan.svg', 'icon_visual_script_comment.svg', 'icon_polygon_path_finder.svg', 'icon_transition_end.svg', 'icon_GUI_visibility_visible.svg', 'icon_timer.svg', 'icon_font.svg', 'icon_uv.svg', 'icon_audio_bus_solo.svg', 'icon_bezier_handles_balanced.svg', 'icon_panels_1.svg', 'icon_shader.svg', 'icon_duplicate.svg', 'icon_bone.svg', 'icon_GUI_scroll_arrow_left.svg', 'icon_parallax_background.svg', 'icon_GUI_slider_grabber.svg', 'icon_stream_texture.svg', 'icon_material_preview_sphere.svg', 'icon_track_trigger.svg', 'icon_copy_node_path.svg', 'icon_pause.svg', 'icon_history.svg', 'icon_image.svg', 'icon_GUI_unchecked.svg', 'icon_animated_texture.svg', 'icon_panels_3_alt.svg', 'icon_play_scene.svg', 'icon_crypto_key.svg', 'icon_sprite_frames.svg', 'icon_visual_shader.svg', 'icon_favorites.svg', 'icon_mirror_y.svg', 'icon_proxy_texture.svg', 'icon_blend.svg', 'icon_script_create.svg', 'icon_GUI_scroll_arrow_right.svg', 'icon_tools.svg', 'icon_GUI_spinbox_updown.svg', 'icon_pool_byte_array.svg', 'icon_lock.svg', 'icon_filesystem.svg', 'icon_onion.svg', 'icon_progress_4.svg', 'icon_rotate_left.svg', 'icon_transpose.svg', 'icon_zoom_more.svg', 'icon_multi_line.svg', 'icon_navigation_polygon.svg', 'icon_file_list.svg', 'icon_grid_minimap.svg', 'icon_gradient_texture.svg', 'icon_arrow_up.svg', 'icon_curve_3d.svg', 'icon_progress_5.svg', 'icon_edit_bezier.svg', 'icon_camera_texture.svg', 'icon_script_extend.svg', 'icon_project_icon_loading.svg', 'icon_folder_big_thumb.svg', 'icon_help_search.svg', 'icon_lock_viewport.svg', 'icon_x509_certificate.svg', 'icon_member_property.svg', 'icon_sprite_sheet.svg', 'icon_viewport_texture.svg', 'icon_bezier_handles_free.svg', 'icon_list_select.svg', 'icon_nil.svg', 'icon_gradient.svg', 'icon_headphones.svg', 'icon_GUI_scroll_arrow_right_hl.svg', 'icon_keyboard.svg', 'icon_edit_internal.svg', 'icon_GUI_slider_grabber_hl.svg', 'icon_rotate_0.svg', 'icon_key_position.svg', 'icon_GUI_visibility_xray.svg', 'icon_override.svg', 'icon_play_travel.svg', 'icon_action_copy.svg', 'icon_close.svg', 'icon_signals_and_groups.svg', 'icon_key.svg', 'icon_bezier_handles_mirror.svg', 'icon_signals.svg', 'icon_material_preview_cube_off.svg', 'icon_GUI_tab_menu_hl.svg', 'icon_plugin_script.svg', 'icon_rotate_180.svg', 'icon_rotate_right.svg', 'icon_reload.svg', 'icon_dynamic_font_data.svg', 'icon_edit_key.svg', 'icon_key_rotation.svg', 'icon_collapse_tree.svg', 'icon_pin.svg', 'icon_tool_rotate.svg', 'icon_ungroup.svg', 'icon_material_preview_light_1.svg', 'icon_animation.svg', 'icon_play_start_backwards.svg', 'icon_search.svg', 'icon_theme_select_all.svg', 'icon_progress_3.svg', 'icon_3_d.svg', 'icon_joypad.svg', 'icon_main_play.svg', 'icon_panels_4.svg', 'icon_animation_track_group.svg', 'icon_member_theme.svg', 'icon_class_list.svg', 'icon_short_cut.svg', 'icon_transition_end_big.svg', 'icon_debug.svg', 'icon_non_favorite.svg', 'icon_expand_tree.svg', 'icon_texture_array.svg', 'icon_pool_vector2_array.svg', 'icon_instance.svg', 'icon_edit.svg', 'icon_script.svg', 'icon_pool_int_array.svg', 'icon_pool_real_array.svg', 'icon_tool_add_node.svg', 'icon_action_paste.svg', 'icon_hsize.svg', 'icon_node.svg', 'icon_theme_deselect_all.svg', 'icon_tool_triangle.svg', 'icon_image_texture.svg', 'icon_GUI_radio_unchecked.svg', 'icon_create_new_scene_from.svg', 'icon_GUI_visibility_hidden.svg', 'icon_rotate_90.svg', 'icon_zoom.svg', 'icon_mesh_texture.svg', 'icon_move_up.svg', 'icon_region_edit.svg', 'icon_editor_plugin.svg', 'icon_remove.svg', 'icon_visual_script_expression.svg', 'icon_group.svg', 'icon_edit_pivot.svg', 'icon_file_thumbnail.svg', 'icon_dynamic_font.svg', 'icon_play_start.svg', 'icon_resource_preloader.svg', 'icon_move_point.svg', 'icon_enum.svg', 'icon_progress_8.svg', 'icon_thumbnail_wait.svg', 'icon_tool_move.svg', 'icon_transition_sync.svg', 'icon_add_split.svg', 'icon_auto_end.svg', 'icon_script_remove.svg', 'icon_play_custom.svg', 'icon_stop.svg', 'icon_key_scale.svg', 'icon_theme_select_full.svg', 'icon_unlock.svg', 'icon_packed_scene.svg', 'icon_debug_skip_breakpoints_on.svg', 'icon_logo.svg', 'icon_move_right.svg', 'icon_color_pick.svg', 'icon_move_left.svg', 'icon_add.svg', 'icon_loop.svg'})
+
+
+60: ('#a5efac', {'icon_file_dialog.svg', 'icon_panel.svg', 'icon_control.svg', 'icon_popup_panel.svg', 'icon_reference_rect.svg', 'icon_window_dialog.svg', 'icon_confirmation_dialog.svg', 'icon_h_box_container.svg', 'icon_tool_button.svg', 'icon_video_player.svg', 'icon_v_slider.svg', 'icon_line_edit.svg', 'icon_texture_progress.svg', 'icon_v_scroll_bar.svg', 'icon_graph_node.svg', 'icon_button.svg', 'icon_progress_bar.svg', 'icon_scroll_container.svg', 'icon_popup_menu.svg', 'icon_viewport_container.svg', 'icon_center_container.svg', 'icon_check_button.svg', 'icon_v_split_container.svg', 'icon_texture_rect.svg', 'icon_link_button.svg', 'icon_h_split_container.svg', 'icon_script_create_dialog.svg', 'icon_check_box.svg', 'icon_popup_dialog.svg', 'icon_container.svg', 'icon_tab_container.svg', 'icon_nine_patch_rect.svg', 'icon_aspect_ratio_container.svg', 'icon_control_layout.svg', 'icon_anchor.svg', 'icon_accept_dialog.svg', 'icon_h_slider.svg', 'icon_tabs.svg', 'icon_v_box_container.svg', 'icon_color_rect.svg', 'icon_h_separator.svg', 'icon_margin_container.svg', 'icon_v_separator.svg', 'icon_label.svg', 'icon_spin_box.svg', 'icon_popup.svg', 'icon_tree.svg', 'icon_panel_container.svg', 'icon_graph_edit.svg', 'icon_text_edit.svg', 'icon_texture_button.svg', 'icon_grid_container.svg', 'icon_color_picker.svg', 'icon_h_scroll_bar.svg', 'icon_item_list.svg', 'icon_editor_control_anchor.svg', 'icon_option_button.svg', 'icon_menu_button.svg', 'icon_rich_text_label.svg', 'icon_color_picker_button.svg'})
+
+
+1: ('#c9cfd4', {'icon_add_atlas_tile.svg'})
+
+
+1: ('#4490fc', {'icon_add_autotile.svg'})
+
+
+1: ('#fce844', {'icon_add_single_tile.svg'})
+
+
+51: ('none', {'icon_GUI_viewport_hdiagsplitter.svg', 'icon_environment.svg', 'icon_back.svg', 'icon_multi_mesh_instance_2d.svg', 'icon_collision_polygon.svg', 'icon_curve_edit.svg', 'icon_interp_linear.svg', 'icon_line_shape_2d.svg', 'icon_spring_arm.svg', 'icon_collision_shape.svg', 'icon_curve.svg', 'icon_curve_delete.svg', 'icon_curve_in_out.svg', 'icon_visual_shader_node_curve_texture.svg', 'icon_GUI_viewport_vhsplitter.svg', 'icon_interp_raw.svg', 'icon_convex_polygon_shape_2d.svg', 'icon_plane_mesh.svg', 'icon_concave_polygon_shape_2d.svg', 'icon_curve_out_in.svg', 'icon_edit_bezier.svg', 'icon_curve_create.svg', 'icon_curve_constant.svg', 'icon_audio_bus_mute.svg', 'icon_circle_shape_2d.svg', 'icon_asset_lib.svg', 'icon_GUI_vsplitter.svg', 'icon_track_continuous.svg', 'icon_import_check.svg', 'icon_visual_shader_node_vector_distance.svg', 'icon_collision_polygon_2d.svg', 'icon_interp_cubic.svg', 'icon_bezier_handles_free.svg', 'icon_GUI_hsplitter.svg', 'icon_mirror_x.svg', 'icon_visual_shader_node_transform_vec_mult.svg', 'icon_forward.svg', 'icon_curve_in.svg', 'icon_bezier_handles_balanced.svg', 'icon_line_2d.svg', 'icon_curve_close.svg', 'icon_curve_curve.svg', 'icon_GUI_viewport_vdiagsplitter.svg', 'icon_add_split.svg', 'icon_collision_shape_2d.svg', 'icon_curve_linear.svg', 'icon_curve_out.svg', 'icon_triple_bar.svg', 'icon_bezier_handles_mirror.svg', 'icon_option_button.svg', 'icon_collapse.svg'})
+
+
+17: ('#84ffb1', {'icon_new_root.svg', 'icon_script_create.svg', 'icon_track_add_key.svg', 'icon_insert_after.svg', 'icon_new.svg', 'icon_reparent.svg', 'icon_cube_map.svg', 'icon_add_split.svg', 'icon_create_new_scene_from.svg', 'icon_reparent_to_new_node.svg', 'icon_track_add_key_hl.svg', 'icon_key_next.svg', 'icon_curve_create.svg', 'icon_slot.svg', 'icon_insert_before.svg', 'icon_color.svg', 'icon_editor_handle_add.svg'})
+
+
+40: ('#a5b7f3', {'icon_particle_attractor_2d.svg', 'icon_pin_joint_2d.svg', 'icon_multi_mesh_instance_2d.svg', 'icon_occluder_polygon_2d.svg', 'icon_path_2d.svg', 'icon_position_2d.svg', 'icon_rigid_body_2d.svg', 'icon_damped_spring_joint_2d.svg', 'icon_grid.svg', 'icon_node_2d.svg', 'icon_visibility_notifier_2d.svg', 'icon_light_occluder_2d.svg', 'icon_static_body_2d.svg', 'icon_world_environment.svg', 'icon_animated_sprite.svg', 'icon_navigation_polygon_instance.svg', 'icon_sprite.svg', 'icon_area_2d.svg', 'icon_kinematic_body_2d.svg', 'icon_navigation_2d.svg', 'icon_tile_map.svg', 'icon_touch_screen_button.svg', 'icon_ray_cast_2d.svg', 'icon_particles_2d.svg', 'icon_remote_transform_2d.svg', 'icon_audio_stream_player_2_d.svg', 'icon_mesh_instance_2d.svg', 'icon_camera_2d.svg', 'icon_skeleton_2d.svg', 'icon_y_sort.svg', 'icon_visibility_enabler_2d.svg', 'icon_parallax_layer.svg', 'icon_polygon_2_d.svg', 'icon_listener_2d.svg', 'icon_light_2d.svg', 'icon_bone_2_d.svg', 'icon_back_buffer_copy.svg', 'icon_canvas_modulate.svg', 'icon_groove_joint_2d.svg', 'icon_path_follow_2d.svg'})
+
+
+176: ('None', {'icon_joy_button.svg', 'icon_gizmo_listener.svg', 'icon_texture_3_d.svg', 'icon_viewport_speed.svg', 'icon_track_capture.svg', 'icon_progress_2.svg', 'icon_occluder_polygon_2d.svg', 'icon_viewport_zoom.svg', 'icon_joy_axis.svg', 'icon_transition_end_auto.svg', 'icon_line_shape_2d.svg', 'icon_graph_node.svg', 'icon_help.svg', 'icon_information_sign.svg', 'icon_GUI_mini_checkerboard.svg', 'icon_instance_options.svg', 'icon_material_preview_cube.svg', 'icon_group_viewport.svg', 'icon_visual_shader_node_color_op.svg', 'icon_zoom_reset.svg', 'icon_expand_bottom_dock.svg', 'icon_tool_connect.svg', 'icon_progress_7.svg', 'icon_debug_continue.svg', 'icon_nine_patch_rect.svg', 'icon_progress_6.svg', 'icon_audio_stream_player_2_d.svg', 'icon_auto_key.svg', 'icon_GUI_dropdown.svg', 'icon_gizmo_spatial_sample_player.svg', 'icon_theme_remove_custom_items.svg', 'icon_new.svg', 'icon_gizmo_portal.svg', 'icon_debug_skip_breakpoints_off.svg', 'icon_visual_shader_node_vector_func.svg', 'icon_progress_1.svg', 'icon_gizmo_directional_light.svg', 'icon_reload_small.svg', 'icon_panorama_sky.svg', 'icon_issue.svg', 'icon_animated_sprite_3d.svg', 'icon_environment.svg', 'icon_gizmo_baked_lightmap.svg', 'icon_transition_end_auto_big.svg', 'icon_gizmo_spot_light.svg', 'icon_transition_sync_big.svg', 'icon_procedural_sky.svg', 'icon_static_body_2d.svg', 'icon_box_shape.svg', 'icon_visual_shader_node_scalar_func.svg', 'icon_default_project_icon.svg', 'icon_audio_stream_player.svg', 'icon_editor_position_unselected.svg', 'icon_godot_docs.svg', 'icon_zoom_less.svg', 'icon_keyboard_physical.svg', 'icon_bus_vu_empty.svg', 'icon_theme.svg', 'icon_material_preview_light_2_off.svg', 'icon_remove_internal.svg', 'icon_time.svg', 'icon_script_create_dialog.svg', 'icon_material_preview_sphere_off.svg', 'icon_bucket.svg', 'icon_asset_lib.svg', 'icon_GUI_vsplit_bg.svg', 'icon_reparent_to_new_node.svg', 'icon_mirror_x.svg', 'icon_transition_end.svg', 'icon_visual_shader_node_transform_vec_mult.svg', 'icon_transition_sync_auto_big.svg', 'icon_font.svg', 'icon_bezier_handles_balanced.svg', 'icon_text_edit.svg', 'icon_parallax_background.svg', 'icon_GUI_slider_grabber.svg', 'icon_gizmo_light.svg', 'icon_audio_stream_player_3_d.svg', 'icon_canvas_modulate.svg', 'icon_copy_node_path.svg', 'icon_history.svg', 'icon_physical_bone.svg', 'icon_room_group.svg', 'icon_visual_shader_node_color_constant.svg', 'icon_GUI_tree_arrow_up.svg', 'icon_visual_shader.svg', 'icon_segment_shape_2d.svg', 'icon_script_create.svg', 'icon_material_preview_light_1_off.svg', 'icon_damped_spring_joint_2d.svg', 'icon_visual_shader_node_expression.svg', 'icon_error_sign.svg', 'icon_spring_arm.svg', 'icon_curve_delete.svg', 'icon_gizmo_c_p_u_particles.svg', 'icon_progress_4.svg', 'icon_rotate_left.svg', 'icon_visual_shader_node_curve_texture.svg', 'icon_zoom_more.svg', 'icon_navigation_polygon.svg', 'icon_gradient_texture.svg', 'icon_progress_5.svg', 'icon_edit_bezier.svg', 'icon_curve_create.svg', 'icon_visual_shader_node_color_uniform.svg', 'icon_script_extend.svg', 'icon_gizmo_particles.svg', 'icon_lock_viewport.svg', 'icon_x509_certificate.svg', 'icon_gizmo_g_i_probe.svg', 'icon_color_rect.svg', 'icon_bezier_handles_free.svg', 'icon_delete_split.svg', 'icon_GUI_tree_arrow_down.svg', 'icon_gradient.svg', 'icon_keyboard.svg', 'icon_edit_internal.svg', 'icon_GUI_slider_grabber_hl.svg', 'icon_visual_shader_node_vec_3_uniform.svg', 'icon_graph_edit.svg', 'icon_play_travel.svg', 'icon_concave_polygon_shape.svg', 'icon_GUI_visibility_xray.svg', 'icon_gizmo_camera.svg', 'icon_bezier_handles_mirror.svg', 'icon_editor_control_anchor.svg', 'icon_material_preview_cube_off.svg', 'icon_option_button.svg', 'icon_rotate_right.svg', 'icon_reload.svg', 'icon_control_vcenter_wide.svg', 'icon_collapse_tree.svg', 'icon_convex_polygon_shape.svg', 'icon_ungroup.svg', 'icon_transition_sync_auto.svg', 'icon_world_environment.svg', 'icon_texture_progress.svg', 'icon_curve_edit.svg', 'icon_progress_3.svg', 'icon_curve.svg', 'icon_visual_shader_node_global_expression.svg', 'icon_navigation_polygon_instance.svg', 'icon_animation_track_group.svg', 'icon_member_theme.svg', 'icon_canvas_item_shader_graph.svg', 'icon_transition_end_big.svg', 'icon_expand_tree.svg', 'icon_texture_array.svg', 'icon_checkerboard.svg', 'icon_script.svg', 'icon_tool_add_node.svg', 'icon_theme_deselect_all.svg', 'icon_tool_triangle.svg', 'icon_create_new_scene_from.svg', 'icon_margin_container.svg', 'icon_ray_shape.svg', 'icon_visual_shader_node_scalar_op.svg', 'icon_godot.svg', 'icon_parallax_layer.svg', 'icon_gizmo_reflection_probe.svg', 'icon_region_edit.svg', 'icon_visual_script_expression.svg', 'icon_dynamic_font.svg', 'icon_curve_close.svg', 'icon_move_point.svg', 'icon_progress_8.svg', 'icon_transition_sync.svg', 'icon_GUI_tree_arrow_right.svg', 'icon_curve_curve.svg', 'icon_theme_remove_all_items.svg', 'icon_script_remove.svg', 'icon_auto_end.svg', 'icon_height_map_shape.svg', 'icon_debug_skip_breakpoints_on.svg', 'icon_capsule_shape.svg', 'icon_animated_sprite.svg'})
+
+
+57: ('#fc9c9c', {'icon_c_p_u_particles.svg', 'icon_particles.svg', 'icon_animated_sprite_3d.svg', 'icon_clipped_camera.svg', 'icon_sprite_3d.svg', 'icon_a_r_v_r_anchor.svg', 'icon_g_i_probe.svg', 'icon_ray_cast.svg', 'icon_hinge_joint.svg', 'icon_world_environment.svg', 'icon_vehicle_body.svg', 'icon_navigation_mesh_instance.svg', 'icon_area.svg', 'icon_inverse_kinematics.svg', 'icon_reflection_probe.svg', 'icon_bone_attachment.svg', 'icon_navigation.svg', 'icon_room.svg', 'icon_position_3d.svg', 'icon_a_r_v_r_camera.svg', 'icon_interpolated_camera.svg', 'icon_a_r_v_r_origin.svg', 'icon_pin_joint.svg', 'icon_quad.svg', 'icon_spot_light.svg', 'icon_static_body.svg', 'icon_kinematic_body.svg', 'icon_path_follow.svg', 'icon_rigid_body.svg', 'icon_proximity_group.svg', 'icon_listener.svg', 'icon_multi_mesh_instance.svg', 'icon_occluder.svg', 'icon_visibility_notifier.svg', 'icon_omni_light.svg', 'icon_remote_transform.svg', 'icon_soft_body.svg', 'icon_generic_6_d_o_f_joint.svg', 'icon_immediate_geometry.svg', 'icon_directional_light.svg', 'icon_portal.svg', 'icon_camera.svg', 'icon_slider_joint.svg', 'icon_room_manager.svg', 'icon_cone_twist_joint.svg', 'icon_audio_stream_player_3_d.svg', 'icon_visibility_enabler.svg', 'icon_path.svg', 'icon_baked_lightmap.svg', 'icon_mesh_instance.svg', 'icon_skeleton.svg', 'icon_vehicle_wheel.svg', 'icon_test_cube.svg', 'icon_physical_bone.svg', 'icon_room_group.svg', 'icon_spatial.svg', 'icon_a_r_v_r_controller.svg'})
+
+
+6: ('#cea4f1', {'icon_bone_track.svg', 'icon_animation_player.svg', 'icon_tween.svg', 'icon_animation_tree.svg', 'icon_rich_text_effect.svg', 'icon_animation_tree_player.svg'})
+
+
+14: ('#ffd684', {'icon_array_mesh.svg', 'icon_cube_mesh.svg', 'icon_cylinder_mesh.svg', 'icon_prism_mesh.svg', 'icon_navigation_mesh.svg', 'icon_mesh.svg', 'icon_capsule_mesh.svg', 'icon_quad_mesh.svg', 'icon_multi_mesh.svg', 'icon_occluder_shape_sphere.svg', 'icon_rayito.svg', 'icon_sphere_mesh.svg', 'icon_point_mesh.svg', 'icon_mesh_library.svg'})
+
+
+19: ('url(#a)', {'icon_panorama_sky.svg', 'icon_audio_stream_sample.svg', 'icon_visual_shader_node_transform_decompose.svg', 'icon_bus_vu_frozen.svg', 'icon_bus_vu_full.svg', 'icon_procedural_sky.svg', 'icon_audio_bus_layout.svg', 'icon_audio_stream_player.svg', 'icon_visual_shader_node_vector_decompose.svg', 'icon_bus_vu_empty.svg', 'icon_visual_shader_node_vector_compose.svg', 'icon_audio_stream_o_g_g_vorbis.svg', 'icon_audio_stream_m_p3.svg', 'icon_audio_stream_player_2_d.svg', 'icon_root_motion_view.svg', 'icon_visual_shader_node_transform_compose.svg', 'icon_audio_stream_player_3_d.svg', 'icon_height_map_shape.svg', 'icon_color_ramp.svg'})
+
+
+1: ('#ee7991', {'icon_a_a_b_b.svg'})
+
+
+60: ('#fff', {'icon_joy_button.svg', 'icon_panorama_sky.svg', 'icon_snap.svg', 'icon_ungroup.svg', 'icon_viewport_speed.svg', 'icon_file_medium_thumb.svg', 'icon_track_add_key_hl.svg', 'icon_viewport_zoom.svg', 'icon_joy_axis.svg', 'icon_overbright_indicator.svg', 'icon_procedural_sky.svg', 'icon_GUI_option_arrow.svg', 'icon_theme_select_all.svg', 'icon_error_sign.svg', 'icon_snap_grid.svg', 'icon_pool_byte_array.svg', 'icon_information_sign.svg', 'icon_vector3.svg', 'icon_gui_close_customizable.svg', 'icon_GUI_mini_checkerboard.svg', 'icon_default_project_icon.svg', 'icon_pool_string_array.svg', 'icon_GUI_ellipsis.svg', 'icon_a_a_b_b.svg', 'icon_editor_position.svg', 'icon_material_preview_cube.svg', 'icon_pool_vector3_array.svg', 'icon_file_big_thumb.svg', 'icon_godot_docs.svg', 'icon_group_viewport.svg', 'icon_editor_pivot.svg', 'icon_grid_minimap.svg', 'icon_gui_resizer.svg', 'icon_keyboard_physical.svg', 'icon_visual_shader_node_color_op.svg', 'icon_pool_vector2_array.svg', 'icon_GUI_tree_updown.svg', 'icon_checkerboard.svg', 'icon_visual_shader_node_color_uniform.svg', 'icon_pool_int_array.svg', 'icon_pool_real_array.svg', 'icon_basis.svg', 'icon_GUI_radio_checked.svg', 'icon_transform.svg', 'icon_GUI_tab.svg', 'icon_GUI_tab_menu.svg', 'icon_godot.svg', 'icon_keyboard.svg', 'icon_group.svg', 'icon_move_point.svg', 'icon_visual_shader_port.svg', 'icon_GUI_checked.svg', 'icon_quat.svg', 'icon_transform_2_D.svg', 'icon_theme_select_full.svg', 'icon_logo.svg', 'icon_material_preview_cube_off.svg', 'icon_vector2.svg', 'icon_gui_close.svg', 'icon_visual_shader_node_color_constant.svg'})
+
+
+1: ('#e3ec69', {'icon_basis.svg'})
+
+
+7: ('#84c2ff', {'icon_dynamic_font.svg', 'icon_curve_close.svg', 'icon_bitmap_font.svg', 'icon_curve_curve.svg', 'icon_cube_map.svg', 'icon_curve_edit.svg', 'icon_color.svg'})
+
+
+1: ('#8da6f0', {'icon_bool.svg'})
+
+
+4: ('#2998ff', {'icon_ray_shape.svg', 'icon_concave_polygon_shape.svg', 'icon_convex_polygon_shape.svg', 'icon_box_shape.svg'})
+
+
+9: ('#68b6ff', {'icon_convex_polygon_shape.svg', 'icon_concave_polygon_shape.svg', 'icon_cylinder_shape.svg', 'icon_capsule_shape_2d.svg', 'icon_ray_shape_2d.svg', 'icon_capsule_shape.svg', 'icon_line_shape_2d.svg', 'icon_script_extend.svg', 'icon_box_shape.svg'})
+
+
+5: ('#a2d2ff', {'icon_concave_polygon_shape.svg', 'icon_height_map_shape.svg', 'icon_ray_shape.svg', 'icon_plane_shape.svg', 'icon_box_shape.svg'})
+
+
+13: ('#ffeb70', {'icon_shader_material.svg', 'icon_fixed_spatial_material.svg', 'icon_visual_shader.svg', 'icon_spatial_material.svg', 'icon_canvas_item_shader_graph.svg', 'icon_canvas_item_shader.svg', 'icon_style_box_flat.svg', 'icon_style_box_line.svg', 'icon_style_box_texture.svg', 'icon_canvas_item_material.svg', 'icon_theme.svg', 'icon_particles_material.svg', 'icon_shader.svg'})
+
+
+14: ('#9dff70', {'icon_shader_material.svg', 'icon_style_box_empty.svg', 'icon_fixed_spatial_material.svg', 'icon_visual_shader.svg', 'icon_spatial_material.svg', 'icon_canvas_item_shader_graph.svg', 'icon_canvas_item_shader.svg', 'icon_style_box_flat.svg', 'icon_style_box_line.svg', 'icon_style_box_texture.svg', 'icon_canvas_item_material.svg', 'icon_theme.svg', 'icon_particles_material.svg', 'icon_shader.svg'})
+
+
+14: ('#70ffb9', {'icon_shader_material.svg', 'icon_style_box_empty.svg', 'icon_fixed_spatial_material.svg', 'icon_visual_shader.svg', 'icon_spatial_material.svg', 'icon_canvas_item_shader_graph.svg', 'icon_canvas_item_shader.svg', 'icon_style_box_flat.svg', 'icon_style_box_line.svg', 'icon_style_box_texture.svg', 'icon_canvas_item_material.svg', 'icon_theme.svg', 'icon_particles_material.svg', 'icon_shader.svg'})
+
+
+14: ('#70deff', {'icon_shader_material.svg', 'icon_style_box_empty.svg', 'icon_fixed_spatial_material.svg', 'icon_visual_shader.svg', 'icon_spatial_material.svg', 'icon_canvas_item_shader_graph.svg', 'icon_canvas_item_shader.svg', 'icon_style_box_flat.svg', 'icon_style_box_line.svg', 'icon_style_box_texture.svg', 'icon_canvas_item_material.svg', 'icon_theme.svg', 'icon_particles_material.svg', 'icon_shader.svg'})
+
+
+13: ('#ff70ac', {'icon_shader_material.svg', 'icon_style_box_empty.svg', 'icon_fixed_spatial_material.svg', 'icon_spatial_material.svg', 'icon_canvas_item_shader_graph.svg', 'icon_canvas_item_shader.svg', 'icon_style_box_flat.svg', 'icon_style_box_line.svg', 'icon_style_box_texture.svg', 'icon_canvas_item_material.svg', 'icon_theme.svg', 'icon_particles_material.svg', 'icon_shader.svg'})
+
+
+13: ('#9f70ff', {'icon_shader_material.svg', 'icon_style_box_empty.svg', 'icon_fixed_spatial_material.svg', 'icon_spatial_material.svg', 'icon_canvas_item_shader_graph.svg', 'icon_canvas_item_shader.svg', 'icon_style_box_flat.svg', 'icon_style_box_line.svg', 'icon_style_box_texture.svg', 'icon_canvas_item_material.svg', 'icon_theme.svg', 'icon_particles_material.svg', 'icon_shader.svg'})
+
+
+18: ('#ff7070', {'icon_shader_material.svg', 'icon_style_box_empty.svg', 'icon_fixed_spatial_material.svg', 'icon_visual_shader.svg', 'icon_spatial_material.svg', 'icon_canvas_item_shader_graph.svg', 'icon_canvas_item_shader.svg', 'icon_heart.svg', 'icon_pool_color_array.svg', 'icon_color_rect.svg', 'icon_style_box_flat.svg', 'icon_style_box_line.svg', 'icon_canvas_modulate.svg', 'icon_style_box_texture.svg', 'icon_canvas_item_material.svg', 'icon_theme.svg', 'icon_particles_material.svg', 'icon_shader.svg'})
+
+
+3: ('#70bfff', {'icon_color_rect.svg', 'icon_canvas_modulate.svg', 'icon_pool_color_array.svg'})
+
+
+3: ('#7aff70', {'icon_color_rect.svg', 'icon_canvas_modulate.svg', 'icon_pool_color_array.svg'})
+
+
+14: ('#ff8484', {'icon_dynamic_font_data.svg', 'icon_debug_next.svg', 'icon_curve_delete.svg', 'icon_move_point.svg', 'icon_editor_position.svg', 'icon_debug_step.svg', 'icon_signal.svg', 'icon_x509_certificate.svg', 'icon_cube_map.svg', 'icon_editor_pivot.svg', 'icon_sample_library.svg', 'icon_script_remove.svg', 'icon_color.svg', 'icon_debug_continue.svg'})
+
+
+16: ('#919191', {'icon_control_align_center.svg', 'icon_control_vcenter_wide.svg', 'icon_control_hcenter_wide.svg', 'icon_control_align_top_left.svg', 'icon_control_align_top_center.svg', 'icon_control_align_right_wide.svg', 'icon_control_align_bottom_wide.svg', 'icon_control_align_right_center.svg', 'icon_control_align_bottom_center.svg', 'icon_control_align_top_wide.svg', 'icon_control_align_top_right.svg', 'icon_control_align_left_center.svg', 'icon_control_align_wide.svg', 'icon_control_align_bottom_left.svg', 'icon_control_align_left_wide.svg', 'icon_control_align_bottom_right.svg'})
+
+
+16: ('#474747', {'icon_control_align_center.svg', 'icon_control_vcenter_wide.svg', 'icon_control_hcenter_wide.svg', 'icon_control_align_top_left.svg', 'icon_control_align_top_center.svg', 'icon_control_align_right_wide.svg', 'icon_control_align_bottom_wide.svg', 'icon_control_align_right_center.svg', 'icon_control_align_bottom_center.svg', 'icon_control_align_top_wide.svg', 'icon_control_align_top_right.svg', 'icon_control_align_left_center.svg', 'icon_control_align_wide.svg', 'icon_control_align_bottom_left.svg', 'icon_control_align_left_wide.svg', 'icon_control_align_bottom_right.svg'})
+
+
+18: ('#d6d6d6', {'icon_control_align_center.svg', 'icon_control_vcenter_wide.svg', 'icon_control_hcenter_wide.svg', 'icon_control_align_top_left.svg', 'icon_control_align_top_center.svg', 'icon_control_align_right_wide.svg', 'icon_control_align_bottom_wide.svg', 'icon_control_align_right_center.svg', 'icon_control_align_bottom_center.svg', 'icon_control_align_center_right.svg', 'icon_control_align_top_right.svg', 'icon_control_align_left_center.svg', 'icon_control_align_top_wide.svg', 'icon_control_align_center_left.svg', 'icon_control_align_wide.svg', 'icon_control_align_bottom_left.svg', 'icon_control_align_left_wide.svg', 'icon_control_align_bottom_right.svg'})
+
+
+5: ('#f5f5f5', {'icon_curve_close.svg', 'icon_curve_delete.svg', 'icon_curve_curve.svg', 'icon_curve_edit.svg', 'icon_curve_create.svg'})
+
+
+1: ('#a3b6f3', {'icon_c_p_u_particles_2_d.svg'})
+
+
+1: ('#708cea', {'icon_damped_spring_joint_2d.svg'})
+
+
+2: ('#ff8585', {'icon_debug_skip_breakpoints_off.svg', 'icon_debug_skip_breakpoints_on.svg'})
+
+
+1: ('#355570', {'icon_default_project_icon.svg'})
+
+
+4: ('#478cbf', {'icon_godot.svg', 'icon_logo.svg', 'icon_godot_docs.svg', 'icon_default_project_icon.svg'})
+
+
+4: ('#414042', {'icon_godot.svg', 'icon_logo.svg', 'icon_godot_docs.svg', 'icon_default_project_icon.svg'})
+
+
+1: ('#e9afaf', {'icon_delete_split.svg'})
+
+
+1: ('#800000', {'icon_delete_split.svg'})
+
+
+1: ('#77edb1', {'icon_dictionary.svg'})
+
+
+6: ('#fefefe', {'icon_editor_path_sharp_handle.svg', 'icon_gizmo_light.svg', 'icon_gizmo_spot_light.svg', 'icon_timeline_indicator.svg', 'icon_gizmo_directional_light.svg', 'icon_editor_path_smooth_handle.svg'})
+
+
+1: ('#69f', {'icon_editor_position_previous.svg'})
+
+
+1: ('#d9d9d9', {'icon_editor_position_unselected.svg'})
+
+
+10: ('#ff5d5d', {'icon_file_dead_medium_thumb.svg', 'icon_import_fail.svg', 'icon_key_invalid.svg', 'icon_error_warning.svg', 'icon_file_dead.svg', 'icon_file_dead_big_thumb.svg', 'icon_error_sign.svg', 'icon_file_broken_big_thumb.svg', 'icon_file_broken.svg', 'icon_status_error.svg'})
+
+
+3: ('#ffdd65', {'icon_status_warning.svg', 'icon_node_warning.svg', 'icon_error_warning.svg'})
+
+
+2: ('#61daf4', {'icon_pool_real_array.svg', 'icon_float.svg'})
+
+
+9: ('#f7f5cf', {'icon_gizmo_listener.svg', 'icon_gizmo_c_p_u_particles.svg', 'icon_gizmo_baked_lightmap.svg', 'icon_gizmo_particles.svg', 'icon_gizmo_g_i_probe.svg', 'icon_gizmo_portal.svg', 'icon_gizmo_camera.svg', 'icon_gizmo_reflection_probe.svg', 'icon_gizmo_spatial_sample_player.svg'})
+
+
+5: ('#b4b4b4', {'icon_gizmo_c_p_u_particles.svg', 'icon_script_create.svg', 'icon_script_remove.svg', 'icon_script.svg', 'icon_script_extend.svg'})
+
+
+3: ('#699ce8', {'icon_GUI_checked.svg', 'icon_GUI_radio_checked.svg', 'icon_GUI_toggle_on.svg'})
+
+
+1: ('#ffb65d', {'icon_information_sign.svg'})
+
+
+2: ('#7dc6ef', {'icon_pool_int_array.svg', 'icon_int.svg'})
+
+
+2: ('#d5d5d5', {'icon_material_preview_cube.svg', 'icon_material_preview_cube_off.svg'})
+
+
+1: ('#79f3e8', {'icon_mini_object.svg'})
+
+
+1: ('#999', {'icon_node_disabled.svg'})
+
+
+1: ('#6993ec', {'icon_node_path.svg'})
+
+
+1: ('#3552b1', {'icon_occluder_polygon_2d.svg'})
+
+
+1: ('#000003', {'icon_overbright_indicator.svg'})
+
+
+1: ('#f77070', {'icon_plane.svg'})
+
+
+1: ('#f2f2f2', {'icon_play_overlay.svg'})
+
+
+1: ('#69ec9e', {'icon_pool_byte_array.svg'})
+
+
+2: ('#6ba7ec', {'icon_pool_string_array.svg', 'icon_string.svg'})
+
+
+2: ('#bd91f1', {'icon_vector2.svg', 'icon_pool_vector2_array.svg'})
+
+
+2: ('#e286f0', {'icon_pool_vector3_array.svg', 'icon_vector3.svg'})
+
+
+1: ('#ec69a3', {'icon_quat.svg'})
+
+
+1: ('#f191a5', {'icon_rect2.svg'})
+
+
+1: ('#69ec9a', {'icon_r_i_d.svg'})
+
+
+1: ('#87e29f', {'icon_script_create_dialog.svg'})
+
+
+2: ('#fefeff', {'icon_static_body_2d.svg', 'icon_text_edit.svg'})
+
+
+1: ('#45ff8b', {'icon_status_success.svg'})
+
+
+1: ('#8eef97', {'icon_theme_remove_all_items.svg'})
+
+
+2: ('#ff4545', {'icon_theme_remove_all_items.svg', 'icon_theme_remove_custom_items.svg'})
+
+
+2: ('#ffe345', {'icon_theme_remove_all_items.svg', 'icon_theme_remove_custom_items.svg'})
+
+
+2: ('#80ff45', {'icon_theme_remove_all_items.svg', 'icon_theme_remove_custom_items.svg'})
+
+
+2: ('#45ffa2', {'icon_theme_remove_all_items.svg', 'icon_theme_remove_custom_items.svg'})
+
+
+2: ('#45d7ff', {'icon_theme_remove_all_items.svg', 'icon_theme_remove_custom_items.svg'})
+
+
+2: ('#ff4596', {'icon_theme_remove_all_items.svg', 'icon_theme_remove_custom_items.svg'})
+
+
+2: ('#8045ff', {'icon_theme_remove_all_items.svg', 'icon_theme_remove_custom_items.svg'})
+
+
+1: ('#4b4b4b', {'icon_tool_triangle.svg'})
+
+
+1: ('#f6a86e', {'icon_transform.svg'})
+
+
+1: ('#c4ec69', {'icon_transform_2_D.svg'})
+
+
+6: ('#77ce57', {'icon_transition_end_auto_big.svg', 'icon_transition_sync_auto.svg', 'icon_transition_end_auto.svg', 'icon_transition_immediate_auto.svg', 'icon_transition_sync_auto_big.svg', 'icon_transition_immediate_auto_big.svg'})
+
+
+1: ('#69ecbd', {'icon_variant.svg'})
+
+
+1: ('#6f91f0', {'icon_visual_shader_node_boolean_uniform.svg'})
+
+
+1: ('#ff4646', {'icon_visual_shader_node_color_op.svg'})
+
+
+1: ('#46ff46', {'icon_visual_shader_node_color_op.svg'})
+
+
+1: ('#4646ff', {'icon_visual_shader_node_color_op.svg'})
+
+
+2: ('#eac968', {'icon_visual_shader_node_cube_map.svg', 'icon_visual_shader_node_cube_map_uniform.svg'})
+
+
+1: ('#68d0ea', {'icon_visual_shader_node_curve_texture.svg'})
+
+
+1: ('#ac73f1', {'icon_visual_shader_node_expression.svg'})
+
+
+1: ('#35d4f4', {'icon_visual_shader_node_global_expression.svg'})
+
+
+3: ('#cf68ea', {'icon_visual_shader_node_scalar_uniform.svg', 'icon_visual_shader_node_scalar_func.svg', 'icon_visual_shader_node_scalar_op.svg'})
+
+
+2: ('#eae068', {'icon_visual_shader_node_texture_uniform.svg', 'icon_visual_shader_node_texture_uniform_triplanar.svg'})
+
+
+1: ('#ea686c', {'icon_visual_shader_node_transform_uniform.svg'})
+
+
+3: ('#b8ea68', {'icon_visual_shader_node_vec_3_uniform.svg', 'icon_visual_shader_node_vector_len.svg', 'icon_visual_shader_node_vector_func.svg'})
+
+
