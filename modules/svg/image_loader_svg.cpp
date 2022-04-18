@@ -154,6 +154,12 @@ Error ImageLoaderSVG::create_image_from_string(Ref<Image> p_image, String p_stri
 	return create_image_from_utf8_buffer(p_image, bytes, p_scale, p_upsample);
 }
 
+Error ImageLoaderSVG::create_image_from_string(Ref<Image> p_image, String p_string, float p_scale, bool p_upsample) {
+    PackedByteArray bytes = p_string.to_utf8_buffer();
+
+    return create_image_from_utf8_buffer(p_image, bytes, p_scale, p_upsample);
+}
+
 void ImageLoaderSVG::get_recognized_extensions(List<String> *p_extensions) const {
 	p_extensions->push_back("svg");
 }
