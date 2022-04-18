@@ -133,16 +133,21 @@ Error ImageLoaderSVG::create_image_from_string(Ref<Image> p_image, const char *p
 	size_t str_len = strlen(p_svg_str);
 	PoolVector<uint8_t> src_data;
 	src_data.resize(str_len + 1);
+    // printf("%s", p_svg_str);
 	PoolVector<uint8_t>::Write src_w = src_data.write();
-	memcpy(src_w.ptr(), p_svg_str, str_len + 1);
+	// memcpy(src_w.ptr(), p_svg_str, str_len + 1);
+	memcpy(src_w.ptr(), p_svg_str, str_len);
+    src_w.ptr()[str_len] = '\0';
 
-	return _create_image(p_image, &src_data, p_scale, upsample, convert_colors);
+	// return _create_image(p_image, &src_data, p_scale, upsample, convert_colors);
+	return _create_image(p_image, &src_data, p_scale, 1.0);
 }
 
 Error ImageLoaderSVG::load_image(Ref<Image> p_image, FileAccess *f, bool p_force_linear, float p_scale) {
 	uint64_t size = f->get_len();
 	PoolVector<uint8_t> src_image;
 	src_image.resize(size + 1);
+
 	PoolVector<uint8_t>::Write src_w = src_image.write();
 	f->get_buffer(src_w.ptr(), size);
 	src_w.ptr()[size] = '\0';

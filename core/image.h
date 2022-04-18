@@ -338,6 +338,7 @@ public:
 	Error load_webp_from_buffer(const PoolVector<uint8_t> &p_array);
 	Error load_tga_from_buffer(const PoolVector<uint8_t> &p_array);
 	Error load_bmp_from_buffer(const PoolVector<uint8_t> &p_array);
+    Error load_svg_from_string(const String p_svg_str, float p_scale, bool upsample);
 
 	Image(const uint8_t *p_mem_png_jpg, int p_len = -1);
 	Image(const char **p_xpm);
