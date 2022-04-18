@@ -400,6 +400,7 @@ public:
 	Error load_webp_from_buffer(const Vector<uint8_t> &p_array);
 	Error load_tga_from_buffer(const Vector<uint8_t> &p_array);
 	Error load_bmp_from_buffer(const Vector<uint8_t> &p_array);
+    Error load_svg_from_string(const String p_svg_str, float p_scale, bool upsample);
 
 	void convert_rg_to_ra_rgba8();
 	void convert_ra_rgba8_to_rg();

@@ -33,6 +33,7 @@
 #include "core/error/error_list.h"
 #include "core/error/error_macros.h"
 #include "core/io/image_loader.h"
+#include "modules/svg/image_loader_svg.h"
 #include "core/io/resource_loader.h"
 #include "core/math/math_funcs.h"
 #include "core/string/print_string.h"
@@ -3474,6 +3475,7 @@ void Image::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("load_webp_from_buffer", "buffer"), &Image::load_webp_from_buffer);
 	ClassDB::bind_method(D_METHOD("load_tga_from_buffer", "buffer"), &Image::load_tga_from_buffer);
 	ClassDB::bind_method(D_METHOD("load_bmp_from_buffer", "buffer"), &Image::load_bmp_from_buffer);
+	ClassDB::bind_method(D_METHOD("load_svg_from_string", "string","scale", "upsample"), &Image::load_svg_from_string);
 
 	ADD_PROPERTY(PropertyInfo(Variant::DICTIONARY, "data", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_STORAGE), "_set_data", "_get_data");
 
@@ -3876,6 +3878,22 @@ Error Image::_load_from_buffer(const Vector<uint8_t> &p_array, ImageMemLoadFunc 
 
 	return OK;
 }
+
+Error Image::load_svg_from_string(const String p_svg_str, float p_scale, bool upsample) {
+    
+    ERR_FAIL_COND_V(p_svg_str.size() == 0, ERR_INVALID_PARAMETER);
+    ERR_FAIL_COND_V(p_scale <= 0.0f, ERR_INVALID_PARAMETER);
+
+    ImageLoaderSVG img_loader;
+    Error err = img_loader.create_image_from_string(this, p_svg_str, p_scale, upsample);
+
+    if (err != OK) {
+        ERR_PRINT("Error loading svg from string:\n");
+    }
+
+    return OK;
+}
+
 
 void Image::average_4_uint8(uint8_t &p_out, const uint8_t &p_a, const uint8_t &p_b, const uint8_t &p_c, const uint8_t &p_d) {
 	p_out = static_cast<uint8_t>((p_a + p_b + p_c + p_d + 2) >> 2);
