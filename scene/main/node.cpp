@@ -1827,6 +1827,14 @@ String Node::get_editor_description() const {
 	}
 }
 
+void Node::set_gadgets(const Array &p_gadget) {
+	data.gadgetry = p_gadget;
+}
+
+Array Node::get_gadgets() const {
+	return data.gadgetry;
+}
+
 void Node::set_editable_instance(Node *p_node, bool p_editable) {
 	ERR_FAIL_NULL(p_node);
 	ERR_FAIL_COND(!is_a_parent_of(p_node));
@@ -2808,6 +2816,10 @@ void Node::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("_get_editor_description"), &Node::get_editor_description);
 	ADD_PROPERTY(PropertyInfo(Variant::STRING, "editor_description", PROPERTY_HINT_MULTILINE_TEXT, "", PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_INTERNAL), "_set_editor_description", "_get_editor_description");
 
+	ClassDB::bind_method(D_METHOD("set_gadgets", "gadgetry"), &Node::set_gadgets);
+	ClassDB::bind_method(D_METHOD("get_gadgets"), &Node::get_gadgets);
+	ADD_PROPERTY(PropertyInfo(Variant::ARRAY, "gadgetry", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_INTERNAL), "set_gadgets", "get_gadgets");
+
 	ClassDB::bind_method(D_METHOD("_set_import_path", "import_path"), &Node::set_import_path);
 	ClassDB::bind_method(D_METHOD("_get_import_path"), &Node::get_import_path);
 	ADD_PROPERTY(PropertyInfo(Variant::NODE_PATH, "_import_path", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_NOEDITOR | PROPERTY_USAGE_INTERNAL), "_set_import_path", "_get_import_path");
@@ -2943,6 +2955,7 @@ Node::Node() {
 	data.input = false;
 	data.unhandled_input = false;
 	data.unhandled_key_input = false;
+	data.gadgetry = Array();
 	data.pause_mode = PAUSE_MODE_INHERIT;
 	data.pause_owner = nullptr;
 	data.network_master = 1; //server by default

@@ -716,6 +716,11 @@
 		<member name="process_priority" type="int" setter="set_process_priority" getter="get_process_priority" default="0">
 			The node's priority in the execution order of the enabled processing callbacks (i.e. [constant NOTIFICATION_PROCESS], [constant NOTIFICATION_PHYSICS_PROCESS] and their internal counterparts). Nodes whose process priority value is [i]lower[/i] will have their processing callbacks executed first.
 		</member>
+		<member name="gadgetry" type="Array" setter="set_gadgets" getter="get_gadgets">
+			An empty Array for developing custom interfaces in an Entity Component System (ECS) manner. Each entry is termed a 'gadget'. Its purpose is to expose customizable data fields in the editor without the need for a script.
+			A primary example for use is to define gadgetry[0] as a [code]Dictionary[/code] with [code]String[/code] keys paired with [code]int[/code] values which are the gadgetry indices from [1..n-1] where n is the size of the gadgetry array.
+			Following this dictionary, custom resources (gadgets) could be attached which expose data to be used in a manner defined by the key name of its index.
+		</member>
 	</members>
 	<signals>
 		<signal name="ready">

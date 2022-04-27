@@ -113,6 +113,7 @@ private:
 		List<Node *>::Element *OW; // owned element
 		List<Node *> owned;
 
+		Array gadgetry;
 		PauseMode pause_mode;
 		Node *pause_owner;
 
@@ -309,6 +310,13 @@ public:
 
 	void set_editor_description(const String &p_editor_description);
 	String get_editor_description() const;
+
+	/* GADGETS */
+
+	void set_gadgets(const Array &p_gadget);
+	Array get_gadgets() const;
+
+	/* END GADGETS */
 
 	void set_editable_instance(Node *p_node, bool p_editable);
 	bool is_editable_instance(const Node *p_node) const;
