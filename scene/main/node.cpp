@@ -1827,12 +1827,13 @@ String Node::get_editor_description() const {
 	}
 }
 
-void Node::set_gadgets(const Array &p_gadget) {
-	data.gadgetry = p_gadget;
+void Node::set_gadget(const Ref<Resource> &p_gadget) {
+	data.gadget = p_gadget;
+    _change_notify();
 }
 
-Array Node::get_gadgets() const {
-	return data.gadgetry;
+Ref<Resource> Node::get_gadget() const {
+	return data.gadget;
 }
 
 void Node::set_editable_instance(Node *p_node, bool p_editable) {
@@ -2002,7 +2003,7 @@ Node *Node::_duplicate(int p_flags, Map<const Node *, Node *> *r_duplimap) const
 		}
 
 		List<PropertyInfo> plist;
-		N->get()->get_property_list(&plist);
+		N->get()->get_property_list(&plist);  
 
 		for (List<PropertyInfo>::Element *E = plist.front(); E; E = E->next()) {
 			if (!(E->get().usage & PROPERTY_USAGE_STORAGE)) {
@@ -2816,9 +2817,9 @@ void Node::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("_get_editor_description"), &Node::get_editor_description);
 	ADD_PROPERTY(PropertyInfo(Variant::STRING, "editor_description", PROPERTY_HINT_MULTILINE_TEXT, "", PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_INTERNAL), "_set_editor_description", "_get_editor_description");
 
-	ClassDB::bind_method(D_METHOD("set_gadgets", "gadgetry"), &Node::set_gadgets);
-	ClassDB::bind_method(D_METHOD("get_gadgets"), &Node::get_gadgets);
-	ADD_PROPERTY(PropertyInfo(Variant::ARRAY, "gadgetry", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_INTERNAL), "set_gadgets", "get_gadgets");
+	ClassDB::bind_method(D_METHOD("set_gadget", "gadget"), &Node::set_gadget);
+	ClassDB::bind_method(D_METHOD("get_gadget"), &Node::get_gadget);
+	ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "gadget", PROPERTY_HINT_RESOURCE_TYPE, "", PROPERTY_USAGE_STORAGE | PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_INTERNAL), "set_gadget", "get_gadget");
 
 	ClassDB::bind_method(D_METHOD("_set_import_path", "import_path"), &Node::set_import_path);
 	ClassDB::bind_method(D_METHOD("_get_import_path"), &Node::get_import_path);
@@ -2955,7 +2956,6 @@ Node::Node() {
 	data.input = false;
 	data.unhandled_input = false;
 	data.unhandled_key_input = false;
-	data.gadgetry = Array();
 	data.pause_mode = PAUSE_MODE_INHERIT;
 	data.pause_owner = nullptr;
 	data.network_master = 1; //server by default

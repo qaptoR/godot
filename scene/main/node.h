@@ -113,7 +113,7 @@ private:
 		List<Node *>::Element *OW; // owned element
 		List<Node *> owned;
 
-		Array gadgetry;
+		Ref<Resource>gadget;
 		PauseMode pause_mode;
 		Node *pause_owner;
 
@@ -313,8 +313,8 @@ public:
 
 	/* GADGETS */
 
-	void set_gadgets(const Array &p_gadget);
-	Array get_gadgets() const;
+	void set_gadget(const Ref<Resource> &p_gadget);
+	Ref<Resource> get_gadget() const;
 
 	/* END GADGETS */
 
