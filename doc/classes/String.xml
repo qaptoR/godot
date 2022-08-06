@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<class name="String" version="3.4">
+<class name="String" version="3.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../class.xsd">
 	<brief_description>
 		Built-in string class.
 	</brief_description>
@@ -7,7 +7,7 @@
 		This is the built-in string class (and the one used by GDScript). It supports Unicode and provides all necessary means for string handling. Strings are reference-counted and use a copy-on-write approach, so passing them around is cheap in resources.
 	</description>
 	<tutorials>
-		<link>https://docs.godotengine.org/en/3.4/tutorials/scripting/gdscript/gdscript_format_string.html</link>
+		<link>$DOCS_URL/tutorials/scripting/gdscript/gdscript_format_string.html</link>
 	</tutorials>
 	<methods>
 		<method name="String">
@@ -301,7 +301,22 @@
 			<argument index="0" name="values" type="Variant" />
 			<argument index="1" name="placeholder" type="String" default="&quot;{_}&quot;" />
 			<description>
-				Formats the string by replacing all occurrences of [code]placeholder[/code] with [code]values[/code].
+				Formats the string by replacing all occurrences of [code]placeholder[/code] with the elements of [code]values[/code].
+				[code]values[/code] can be a [Dictionary] or an [Array]. Any underscores in [code]placeholder[/code] will be replaced with the corresponding keys in advance. Array elements use their index as keys.
+				[codeblock]
+				# Prints: Waiting for Godot is a play by Samuel Beckett, and Godot Engine is named after it.
+				var use_array_values = "Waiting for {0} is a play by {1}, and {0} Engine is named after it."
+				print(use_array_values.format(["Godot", "Samuel Beckett"]))
+
+				# Prints: User 42 is Godot.
+				print("User {id} is {name}.".format({"id": 42, "name": "Godot"}))
+				[/codeblock]
+				Some additional handling is performed when [code]values[/code] is an array. If [code]placeholder[/code] does not contain an underscore, the elements of the array will be used to replace one occurrence of the placeholder in turn; If an array element is another 2-element array, it'll be interpreted as a key-value pair.
+				[codeblock]
+				# Prints: User 42 is Godot.
+				print("User {} is {}.".format([42, "Godot"], "{}"))
+				print("User {id} is {name}.".format([["id", 42], ["name", "Godot"]]))
+				[/codeblock]
 			</description>
 		</method>
 		<method name="get_base_dir">
@@ -336,6 +351,19 @@
 			<return type="String" />
 			<description>
 				If the string is a valid file path, returns the filename.
+			</description>
+		</method>
+		<method name="get_slice">
+			<return type="String" />
+			<argument index="0" name="delimiter" type="String" />
+			<argument index="1" name="slice" type="int" />
+			<description>
+				Splits a string using a [code]delimiter[/code] and returns a substring at index [code]slice[/code]. Returns an empty string if the index doesn't exist.
+				This is a more performant alternative to [method split] for cases when you need only one element from the array at a fixed index.
+				Example:
+				[codeblock]
+				print("i/am/example/string".get_slice("/", 2)) # Prints 'example'.
+				[/codeblock]
 			</description>
 		</method>
 		<method name="hash">
@@ -475,11 +503,11 @@
 			<description>
 				Returns [code]true[/code] if this string contains a valid integer.
 				[codeblock]
-				print("7".is_valid_int()) # Prints "True"
-				print("14.6".is_valid_int()) # Prints "False"
-				print("L".is_valid_int()) # Prints "False"
-				print("+3".is_valid_int()) # Prints "True"
-				print("-12".is_valid_int()) # Prints "True"
+				print("7".is_valid_integer()) # Prints "True"
+				print("14.6".is_valid_integer()) # Prints "False"
+				print("L".is_valid_integer()) # Prints "False"
+				print("+3".is_valid_integer()) # Prints "True"
+				print("-12".is_valid_integer()) # Prints "True"
 				[/codeblock]
 			</description>
 		</method>
@@ -487,6 +515,17 @@
 			<return type="bool" />
 			<description>
 				Returns [code]true[/code] if this string contains only a well-formatted IPv4 or IPv6 address. This method considers [url=https://en.wikipedia.org/wiki/Reserved_IP_addresses]reserved IP addresses[/url] such as [code]0.0.0.0[/code] as valid.
+			</description>
+		</method>
+		<method name="join">
+			<return type="String" />
+			<argument index="0" name="parts" type="PoolStringArray" />
+			<description>
+				Return a [String] which is the concatenation of the [code]parts[/code]. The separator between elements is the string providing this method.
+				Example:
+				[codeblock]
+				print(", ".join(["One", "Two", "Three", "Four"]))
+				[/codeblock]
 			</description>
 		</method>
 		<method name="json_escape">
@@ -727,6 +766,7 @@
 			<description>
 				Splits the string by a [code]delimiter[/code] string and returns an array of the substrings. The [code]delimiter[/code] can be of any length.
 				If [code]maxsplit[/code] is specified, it defines the number of splits to do from the left up to [code]maxsplit[/code]. The default value of [code]0[/code] means that all items are split.
+				If you need only one element from the array at a specific index, [method get_slice] is a more performant option.
 				Example:
 				[codeblock]
 				var some_string = "One,Two,Three,Four"

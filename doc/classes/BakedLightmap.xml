@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<class name="BakedLightmap" inherits="VisualInstance" version="3.4">
+<class name="BakedLightmap" inherits="VisualInstance" version="3.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../class.xsd">
 	<brief_description>
 		Prerendered indirect light map for a scene.
 	</brief_description>
@@ -9,7 +9,7 @@
 		[b]Note:[/b] Due to how lightmaps work, most properties only have a visible effect once lightmaps are baked again.
 	</description>
 	<tutorials>
-		<link>https://docs.godotengine.org/en/3.4/tutorials/3d/baked_lightmaps.html</link>
+		<link>$DOCS_URL/tutorials/3d/baked_lightmaps.html</link>
 	</tutorials>
 	<methods>
 		<method name="bake">
@@ -23,7 +23,8 @@
 	</methods>
 	<members>
 		<member name="atlas_generate" type="bool" setter="set_generate_atlas" getter="is_generate_atlas_enabled" default="true">
-			When enabled, the lightmapper will merge the textures for all meshes into a single large layered texture. Not supported in GLES2.
+			If [code]true[/code], the lightmapper will merge the textures for all meshes into one or several large layered textures. If [code]false[/code], every mesh will get its own lightmap texture, which is less efficient.
+			[b]Note:[/b] Atlas lightmap rendering is only supported in GLES3, [i]not[/i] GLES2. Non-atlas lightmap rendering is supported by both GLES3 and GLES2. If [member ProjectSettings.rendering/quality/driver/fallback_to_gles2] is [code]true[/code], consider baking lightmaps with [member atlas_generate] set to [code]false[/code] so that the resulting lightmap is visible in both GLES3 and GLES2.
 		</member>
 		<member name="atlas_max_size" type="int" setter="set_max_atlas_size" getter="get_max_atlas_size" default="4096">
 			Maximum size of each lightmap layer, only used when [member atlas_generate] is enabled.

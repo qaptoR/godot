@@ -83,6 +83,25 @@ platform/android/java/*/libs/
 
 # Javascript
 *.bc
+platform/javascript/node_modules/
+
+# Misc
+*.debug
+
+#############################
+### IDE and tool specific ###
+#############################
+
+# Automake
+.deps/*
+.dirstamp
+
+# ccls
+.ccls-cache/
+
+# clangd
+.clangd/
+.cache/
 
 # Misc
 *.debug

@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef PROJECT_EXPORT_SETTINGS_H
-#define PROJECT_EXPORT_SETTINGS_H
+#ifndef PROJECT_EXPORT_H
+#define PROJECT_EXPORT_H
 
 #include "core/os/dir_access.h"
 #include "core/os/thread.h"
@@ -74,7 +74,8 @@ private:
 	Button *button_export;
 	bool updating;
 
-	AcceptDialog *error_dialog;
+	RichTextLabel *result_dialog_log;
+	AcceptDialog *result_dialog;
 	ConfirmationDialog *delete_confirm;
 
 	OptionButton *export_filter;
@@ -156,6 +157,8 @@ private:
 	void _script_encryption_key_changed(const String &p_key);
 	bool _validate_script_encryption_key(const String &p_key);
 
+	void _open_key_help_link();
+
 	void _tab_changed(int);
 
 protected:
@@ -174,4 +177,4 @@ public:
 	~ProjectExportDialog();
 };
 
-#endif // PROJECT_EXPORT_SETTINGS_H
+#endif // PROJECT_EXPORT_H

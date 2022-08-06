@@ -109,6 +109,10 @@ void Camera::_update_camera() {
 	}
 }
 
+void Camera::_physics_interpolated_changed() {
+	VisualServer::get_singleton()->camera_set_interpolated(camera, is_physics_interpolated());
+}
+
 void Camera::_notification(int p_what) {
 	switch (p_what) {
 		case NOTIFICATION_ENTER_WORLD: {
@@ -122,12 +126,16 @@ void Camera::_notification(int p_what) {
 			if (current || first_camera) {
 				viewport->_camera_set(this);
 			}
-
 		} break;
 		case NOTIFICATION_TRANSFORM_CHANGED: {
 			_request_camera_update();
 			if (doppler_tracking != DOPPLER_TRACKING_DISABLED) {
 				velocity_tracker->update_position(get_global_transform().origin);
+			}
+		} break;
+		case NOTIFICATION_RESET_PHYSICS_INTERPOLATION: {
+			if (is_physics_interpolated()) {
+				VisualServer::get_singleton()->camera_reset_physics_interpolation(camera);
 			}
 		} break;
 		case NOTIFICATION_EXIT_WORLD: {
@@ -501,7 +509,7 @@ void Camera::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_frustum", "size", "offset", "z_near", "z_far"), &Camera::set_frustum);
 	ClassDB::bind_method(D_METHOD("make_current"), &Camera::make_current);
 	ClassDB::bind_method(D_METHOD("clear_current", "enable_next"), &Camera::clear_current, DEFVAL(true));
-	ClassDB::bind_method(D_METHOD("set_current"), &Camera::set_current);
+	ClassDB::bind_method(D_METHOD("set_current", "enable"), &Camera::set_current);
 	ClassDB::bind_method(D_METHOD("is_current"), &Camera::is_current);
 	ClassDB::bind_method(D_METHOD("get_camera_transform"), &Camera::get_camera_transform);
 	ClassDB::bind_method(D_METHOD("get_fov"), &Camera::get_fov);
@@ -522,7 +530,7 @@ void Camera::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_zfar"), &Camera::set_zfar);
 	ClassDB::bind_method(D_METHOD("set_znear"), &Camera::set_znear);
 	ClassDB::bind_method(D_METHOD("get_projection"), &Camera::get_projection);
-	ClassDB::bind_method(D_METHOD("set_projection"), &Camera::set_projection);
+	ClassDB::bind_method(D_METHOD("set_projection", "projection"), &Camera::set_projection);
 	ClassDB::bind_method(D_METHOD("set_h_offset", "ofs"), &Camera::set_h_offset);
 	ClassDB::bind_method(D_METHOD("get_h_offset"), &Camera::get_h_offset);
 	ClassDB::bind_method(D_METHOD("set_v_offset", "ofs"), &Camera::set_v_offset);
@@ -642,7 +650,7 @@ void Camera::set_oblique_plane_from_transform(Transform p_oblique_transform) {
 }
 
 void Camera::set_size(float p_size) {
-	ERR_FAIL_COND(p_size < 0.1 || p_size > 16384);
+	ERR_FAIL_COND(p_size < 0.001 || p_size > 16384);
 	size = p_size;
 	_update_camera_mode();
 	_change_notify("size");
@@ -727,7 +735,7 @@ Vector3 Camera::get_doppler_tracked_velocity() const {
 	}
 }
 Camera::Camera() {
-	camera = VisualServer::get_singleton()->camera_create();
+	camera = RID_PRIME(VisualServer::get_singleton()->camera_create());
 	size = 1;
 	fov = 0;
 	oblique_normal = Vector3();
@@ -965,7 +973,7 @@ ClippedCamera::ClippedCamera() {
 	collision_mask = 1;
 	set_notify_local_transform(Engine::get_singleton()->is_editor_hint());
 	points.resize(5);
-	pyramid_shape = PhysicsServer::get_singleton()->shape_create(PhysicsServer::SHAPE_CONVEX_POLYGON);
+	pyramid_shape = RID_PRIME(PhysicsServer::get_singleton()->shape_create(PhysicsServer::SHAPE_CONVEX_POLYGON));
 	clip_to_areas = false;
 	clip_to_bodies = true;
 }

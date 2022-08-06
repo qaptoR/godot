@@ -1253,8 +1253,32 @@ void VisualScriptEditor::_member_edited() {
 		undo_redo->create_action(TTR("Rename Variable"));
 		undo_redo->add_do_method(script.ptr(), "rename_variable", name, new_name);
 		undo_redo->add_undo_method(script.ptr(), "rename_variable", new_name, name);
+
+		// also fix all variable setter & getter calls
+		List<StringName> vlst;
+		script->get_variable_list(&vlst);
+		for (List<StringName>::Element *E = vlst.front(); E; E = E->next()) {
+			List<int> lst;
+			script->get_node_list(E->get(), &lst);
+			for (List<int>::Element *F = lst.front(); F; F = F->next()) {
+				Ref<VisualScriptVariableGet> vget = script->get_node(E->get(), F->get());
+				if (vget.is_valid() && vget->get_variable() == name) {
+					undo_redo->add_do_method(vget.ptr(), "set_variable", new_name);
+					undo_redo->add_undo_method(vget.ptr(), "set_variable", name);
+				}
+
+				Ref<VisualScriptVariableSet> vset = script->get_node(E->get(), F->get());
+				if (vset.is_valid() && vset->get_variable() == name) {
+					undo_redo->add_do_method(vset.ptr(), "set_variable", new_name);
+					undo_redo->add_undo_method(vset.ptr(), "set_variable", name);
+				}
+			}
+		}
+
 		undo_redo->add_do_method(this, "_update_members");
 		undo_redo->add_undo_method(this, "_update_members");
+		undo_redo->add_do_method(this, "_update_graph");
+		undo_redo->add_undo_method(this, "_update_graph");
 		undo_redo->add_do_method(this, "emit_signal", "edited_script_changed");
 		undo_redo->add_undo_method(this, "emit_signal", "edited_script_changed");
 		undo_redo->commit_action();
@@ -1807,17 +1831,23 @@ void VisualScriptEditor::_on_nodes_paste() {
 	}
 }
 
-void VisualScriptEditor::_on_nodes_delete() {
+void VisualScriptEditor::_on_nodes_delete(const Array &p_nodes) {
 	// delete all the selected nodes
 
 	List<int> to_erase;
 
-	for (int i = 0; i < graph->get_child_count(); i++) {
-		GraphNode *gn = Object::cast_to<GraphNode>(graph->get_child(i));
-		if (gn) {
-			if (gn->is_selected() && gn->is_close_button_visible()) {
-				to_erase.push_back(gn->get_name().operator String().to_int());
+	if (p_nodes.empty()) {
+		for (int i = 0; i < graph->get_child_count(); i++) {
+			GraphNode *gn = Object::cast_to<GraphNode>(graph->get_child(i));
+			if (gn) {
+				if (gn->is_selected() && gn->is_close_button_visible()) {
+					to_erase.push_back(gn->get_name().operator String().to_int());
+				}
 			}
+		}
+	} else {
+		for (int i = 0; i < graph->get_child_count(); i++) {
+			to_erase.push_back(p_nodes[i].operator String().to_int());
 		}
 	}
 
@@ -2614,15 +2644,21 @@ void VisualScriptEditor::reload_text() {
 String VisualScriptEditor::get_name() {
 	String name;
 
-	if (script->get_path().find("local://") == -1 && script->get_path().find("::") == -1) {
-		name = script->get_path().get_file();
-		if (is_unsaved()) {
-			name += "(*)";
+	name = script->get_path().get_file();
+	if (name.empty()) {
+		// This appears for newly created built-in scripts before saving the scene.
+		name = TTR("[unsaved]");
+	} else if (script->get_path().find("local://") == -1 || script->get_path().find("::") == -1) {
+		const String &script_name = script->get_name();
+		if (script_name != "") {
+			// If the built-in script has a custom resource name defined,
+			// display the built-in script name as follows: `ResourceName (scene_file.tscn)`
+			name = vformat("%s (%s)", script_name, name.get_slice("::", 0));
 		}
-	} else if (script->get_name() != "") {
-		name = script->get_name();
-	} else {
-		name = script->get_class() + "(" + itos(script->get_instance_id()) + ")";
+	}
+
+	if (is_unsaved()) {
+		name += "(*)";
 	}
 
 	return name;
@@ -3161,7 +3197,7 @@ void VisualScriptEditor::_graph_connected(const String &p_from, int p_from_slot,
 			undo_redo->add_do_method(script.ptr(), "data_connect", func, p_from.to_int(), from_port, p_to.to_int(), to_port);
 			undo_redo->add_undo_method(script.ptr(), "data_disconnect", func, p_from.to_int(), from_port, p_to.to_int(), to_port);
 		} else {
-			// this is noice
+			// this is nice
 			undo_redo->add_do_method(script.ptr(), "data_connect", func, p_from.to_int(), from_port, conv_node, 0);
 			undo_redo->add_do_method(script.ptr(), "data_connect", func, conv_node, 0, p_to.to_int(), to_port);
 			// I don't think this is needed but gonna leave it here for now... until I need to finalise it all
@@ -4223,7 +4259,7 @@ void VisualScriptEditor::_comment_node_resized(const Vector2 &p_new_size, int p_
 void VisualScriptEditor::_menu_option(int p_what) {
 	switch (p_what) {
 		case EDIT_DELETE_NODES: {
-			_on_nodes_delete();
+			_on_nodes_delete(Array());
 		} break;
 		case EDIT_TOGGLE_BREAKPOINT: {
 			List<String> reselect;
@@ -4258,7 +4294,7 @@ void VisualScriptEditor::_menu_option(int p_what) {
 		} break;
 		case EDIT_CUT_NODES: {
 			_on_nodes_copy();
-			_on_nodes_delete();
+			_on_nodes_delete(Array());
 		} break;
 		case EDIT_PASTE_NODES: {
 			_on_nodes_paste();
