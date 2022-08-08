@@ -127,7 +127,6 @@ private:
 		List<Node *> owned;
 
 		Ref<Resource>gadget;
-		PauseMode pause_mode;
 		Node *pause_owner;
 
 		int network_master;

@@ -2092,6 +2092,9 @@ void SpatialMaterial::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_clipping_plane", "clip_plane"), &SpatialMaterial::set_clipping_plane);
     ClassDB::bind_method(D_METHOD("get_clipping_plane"), &SpatialMaterial::get_clipping_plane);
 
+    ClassDB::bind_method(D_METHOD("set_async_mode", "mode"), &SpatialMaterial::set_async_mode);
+	ClassDB::bind_method(D_METHOD("get_async_mode"), &SpatialMaterial::get_async_mode);
+
 	ADD_GROUP("Flags", "flags_");
 	ADD_PROPERTYI(PropertyInfo(Variant::BOOL, "flags_transparent"), "set_feature", "get_feature", FEATURE_TRANSPARENT);
 	ADD_PROPERTYI(PropertyInfo(Variant::BOOL, "flags_use_shadow_to_opacity"), "set_flag", "get_flag", FLAG_USE_SHADOW_TO_OPACITY);
