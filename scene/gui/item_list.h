@@ -79,8 +79,9 @@ private:
 
 	bool ensure_selected_visible;
 	bool same_column_width;
+	bool same_row_height;
 
-    bool auto_width;
+	bool auto_width;
 	float auto_width_value;
 
 	bool auto_height;
@@ -98,6 +99,7 @@ private:
 
 	int current_columns;
 	int fixed_column_width;
+	int fixed_row_height;
 	int max_text_lines;
 	int max_columns;
 
@@ -188,8 +190,14 @@ public:
 	void set_fixed_column_width(int p_size);
 	int get_fixed_column_width() const;
 
+	void set_fixed_row_height(int p_size);
+	int get_fixed_row_height() const;
+
 	void set_same_column_width(bool p_enable);
 	bool is_same_column_width() const;
+
+	void set_same_row_height(bool p_enable);
+	bool is_same_row_height() const;
 
 	void set_max_text_lines(int p_lines);
 	int get_max_text_lines() const;
@@ -224,9 +232,9 @@ public:
 	void set_icon_scale(real_t p_scale);
 	real_t get_icon_scale() const;
 
-    void set_auto_width(bool p_enable);
+	void set_auto_width(bool p_enable);
 	bool has_auto_width() const;
-    
+
 	void set_auto_height(bool p_enable);
 	bool has_auto_height() const;
 
