@@ -657,7 +657,14 @@ bool AnimationTree::_update_caches(AnimationPlayer *player) {
 							continue;
 						}
 
-						TrackCacheTransform *track_xform = memnew(TrackCacheTransform);
+                        TrackCacheTransform *track_xform;
+                        // if (root_motion_track == path) {
+                        //     track_xform = memnew(TrackCacheTransformRoot);
+                        //     track_xform->root_motion = true;
+                        // } else {
+    					    track_xform = memnew(TrackCacheTransform);
+                            track_xform->root_motion = false;
+                        // }
 						track_xform->type = Animation::TYPE_POSITION_3D;
 
 						track_xform->node_3d = node_3d;
@@ -936,6 +943,7 @@ static void _call_object(Object *p_object, const StringName &p_method, const Vec
 		p_object->callp(p_method, argptrs, argcount, ce);
 	}
 }
+
 void AnimationTree::_process_graph(double p_delta) {
 	_update_properties(); //if properties need updating, update them
 
@@ -1037,6 +1045,15 @@ void AnimationTree::_process_graph(double p_delta) {
 
 			switch (track->type) {
 				case Animation::TYPE_POSITION_3D: {
+                    // TrackCacheTransformRoot *t = static_cast<TrackCacheTransformRoot *>(track);
+                    // if (t->root_motion) {
+                    //     t->loc_delta = Vector3(0, 0, 0);
+                    //     t->rot_delta = Quaternion(0, 0, 0, 1);
+                    //     t->scale_delta = Vector3(1, 1, 1);
+                    // }
+                    // t->loc = t->init_loc;
+                    // t->rot = t->init_rot;
+                    // t->scale = t->init_scale;
 					TrackCacheTransform *t = static_cast<TrackCacheTransform *>(track);
 					if (track->root_motion) {
 						root_motion_cache.loc = Vector3(0, 0, 0);
@@ -1119,10 +1136,14 @@ void AnimationTree::_process_graph(double p_delta) {
 						if (Math::is_zero_approx(blend)) {
 							continue; // Nothing to blend.
 						}
+						
+                        // TrackCacheTransformRoot *t = static_cast<TrackCacheTransformRoot *>(track);
+						// if (track->root_motion && calc_root && root_motion_lock_position != LOCK_NONE) {
 						TrackCacheTransform *t = static_cast<TrackCacheTransform *>(track);
 
 						if (track->root_motion && calc_root) {
 							double prev_time = time - delta;
+
 							if (!backward) {
 								if (prev_time < 0) {
 									switch (a->get_loop_mode()) {
@@ -1168,6 +1189,7 @@ void AnimationTree::_process_graph(double p_delta) {
 									loc[0] = post_process_key_value(a, i, loc[0], t->object, t->bone_idx);
 									a->position_track_interpolate(i, (double)a->get_length(), &loc[1]);
 									loc[1] = post_process_key_value(a, i, loc[1], t->object, t->bone_idx);
+									// t->loc_delta += (loc[1] - loc[0]) * blend;
 									root_motion_cache.loc += (loc[1] - loc[0]) * blend;
 									prev_time = 0;
 								}
@@ -1180,6 +1202,7 @@ void AnimationTree::_process_graph(double p_delta) {
 									loc[0] = post_process_key_value(a, i, loc[0], t->object, t->bone_idx);
 									a->position_track_interpolate(i, 0, &loc[1]);
 									loc[1] = post_process_key_value(a, i, loc[1], t->object, t->bone_idx);
+									// t->loc_delta += (loc[1] - loc[0]) * blend;
 									root_motion_cache.loc += (loc[1] - loc[0]) * blend;
 									prev_time = (double)a->get_length();
 								}
@@ -1192,10 +1215,13 @@ void AnimationTree::_process_graph(double p_delta) {
 							loc[0] = post_process_key_value(a, i, loc[0], t->object, t->bone_idx);
 							a->position_track_interpolate(i, time, &loc[1]);
 							loc[1] = post_process_key_value(a, i, loc[1], t->object, t->bone_idx);
+							// t->loc_delta += (loc[1] - loc[0]) * blend;
 							root_motion_cache.loc += (loc[1] - loc[0]) * blend;
 							prev_time = !backward ? 0 : (double)a->get_length();
 						}
 
+
+                        // if (!track->root_motion || root_motion_lock_position != LOCK_XYZ) {
 						{
 							Vector3 loc;
 
@@ -1214,10 +1240,13 @@ void AnimationTree::_process_graph(double p_delta) {
 						if (Math::is_zero_approx(blend)) {
 							continue; // Nothing to blend.
 						}
+						// TrackCacheTransformRoot *t = static_cast<TrackCacheTransformRoot *>(track);
+						// if (track->root_motion && calc_root && root_motion_lock_rotation != LOCK_NONE) {
 						TrackCacheTransform *t = static_cast<TrackCacheTransform *>(track);
 
 						if (track->root_motion && calc_root) {
 							double prev_time = time - delta;
+
 							if (!backward) {
 								if (prev_time < 0) {
 									switch (a->get_loop_mode()) {
@@ -1263,6 +1292,7 @@ void AnimationTree::_process_graph(double p_delta) {
 									rot[0] = post_process_key_value(a, i, rot[0], t->object, t->bone_idx);
 									a->rotation_track_interpolate(i, (double)a->get_length(), &rot[1]);
 									rot[1] = post_process_key_value(a, i, rot[1], t->object, t->bone_idx);
+									// t->rot_delta = (t->rot_delta * Quaternion().slerp(rot[0].inverse() * rot[1], blend)).normalized();
 									root_motion_cache.rot = (root_motion_cache.rot * Quaternion().slerp(rot[0].inverse() * rot[1], blend)).normalized();
 									prev_time = 0;
 								}
@@ -1274,6 +1304,7 @@ void AnimationTree::_process_graph(double p_delta) {
 									}
 									rot[0] = post_process_key_value(a, i, rot[0], t->object, t->bone_idx);
 									a->rotation_track_interpolate(i, 0, &rot[1]);
+									// t->rot_delta = (t->rot_delta * Quaternion().slerp(rot[0].inverse() * rot[1], blend)).normalized();
 									root_motion_cache.rot = (root_motion_cache.rot * Quaternion().slerp(rot[0].inverse() * rot[1], blend)).normalized();
 									prev_time = (double)a->get_length();
 								}
@@ -1287,10 +1318,12 @@ void AnimationTree::_process_graph(double p_delta) {
 
 							a->rotation_track_interpolate(i, time, &rot[1]);
 							rot[1] = post_process_key_value(a, i, rot[1], t->object, t->bone_idx);
+							// t->rot_delta = (t->rot_delta * Quaternion().slerp(rot[0].inverse() * rot[1], blend)).normalized();
 							root_motion_cache.rot = (root_motion_cache.rot * Quaternion().slerp(rot[0].inverse() * rot[1], blend)).normalized();
 							prev_time = !backward ? 0 : (double)a->get_length();
 						}
 
+                        // if (!track->root_motion || root_motion_lock_rotation != LOCK_XYZ) {
 						{
 							Quaternion rot;
 
@@ -1309,10 +1342,13 @@ void AnimationTree::_process_graph(double p_delta) {
 						if (Math::is_zero_approx(blend)) {
 							continue; // Nothing to blend.
 						}
+						// TrackCacheTransformRoot *t = static_cast<TrackCacheTransformRoot *>(track);
+						// if (track->root_motion && calc_root && root_motion_lock_scale != LOCK_NONE) {
 						TrackCacheTransform *t = static_cast<TrackCacheTransform *>(track);
 
 						if (track->root_motion && calc_root) {
 							double prev_time = time - delta;
+
 							if (!backward) {
 								if (prev_time < 0) {
 									switch (a->get_loop_mode()) {
@@ -1357,8 +1393,9 @@ void AnimationTree::_process_graph(double p_delta) {
 									}
 									scale[0] = post_process_key_value(a, i, scale[0], t->object, t->bone_idx);
 									a->scale_track_interpolate(i, (double)a->get_length(), &scale[1]);
-									root_motion_cache.scale += (scale[1] - scale[0]) * blend;
 									scale[1] = post_process_key_value(a, i, scale[1], t->object, t->bone_idx);
+									// t->scale_delta += (scale[1] - scale[0]) * blend;
+									root_motion_cache.scale += (scale[1] - scale[0]) * blend;
 									prev_time = 0;
 								}
 							} else {
@@ -1370,6 +1407,7 @@ void AnimationTree::_process_graph(double p_delta) {
 									scale[0] = post_process_key_value(a, i, scale[0], t->object, t->bone_idx);
 									a->scale_track_interpolate(i, 0, &scale[1]);
 									scale[1] = post_process_key_value(a, i, scale[1], t->object, t->bone_idx);
+									// t->scale_delta += (scale[1] - scale[0]) * blend;
 									root_motion_cache.scale += (scale[1] - scale[0]) * blend;
 									prev_time = (double)a->get_length();
 								}
@@ -1383,10 +1421,12 @@ void AnimationTree::_process_graph(double p_delta) {
 
 							a->scale_track_interpolate(i, time, &scale[1]);
 							scale[1] = post_process_key_value(a, i, scale[1], t->object, t->bone_idx);
+							// t->scale_delta += (scale[1] - scale[0]) * blend;
 							root_motion_cache.scale += (scale[1] - scale[0]) * blend;
 							prev_time = !backward ? 0 : (double)a->get_length();
 						}
 
+                        // if (!track->root_motion || root_motion_lock_scale != LOCK_XYZ) {
 						{
 							Vector3 scale;
 
@@ -1697,16 +1737,57 @@ void AnimationTree::_process_graph(double p_delta) {
 			switch (track->type) {
 				case Animation::TYPE_POSITION_3D: {
 #ifndef _3D_DISABLED
-					TrackCacheTransform *t = static_cast<TrackCacheTransform *>(track);
+					TrackCacheTransformRoot *t = static_cast<TrackCacheTransformRoot *>(track);
 
 					if (t->root_motion) {
-						root_motion_position = root_motion_cache.loc;
-						root_motion_rotation = root_motion_cache.rot;
-						root_motion_scale = root_motion_cache.scale - Vector3(1, 1, 1);
+                        for (int i = 0 ; i < 3; ++i) {
+                            if (root_motion_lock_position & 1<<i) {
+                                t->loc[i] = t->init_loc[i];
+                            } else {
+                                // t->loc_delta[i] = 0;
+                                root_motion_cache.loc[i] = 0;
+                            }
+                        }
+
+                        Vector3 rot_euler = t->rot.get_euler();
+                        Vector3 init_euler = t->init_rot.get_euler();
+                        // Vector3 delta_euler = t->rot_delta.get_euler();
+                        Vector3 delta_euler = root_motion_cache.rot.get_euler();
+                        Vector3 zero_euler = Quaternion(0, 0, 0, 1).get_euler();
+                        for (int i = 0 ; i < 3; ++i) {
+                            if (root_motion_lock_rotation & 1<<i) {
+                                rot_euler[i] = init_euler[i];
+                            } else {
+                                delta_euler[i] = zero_euler[i];
+                            }
+                        }
+                        t->rot = Quaternion::from_euler(rot_euler);
+                        // t->rot_delta = Quaternion::from_euler(delta_euler);
+                        root_motion_cache.rot = Quaternion::from_euler(delta_euler);
+
+                        Vector3 root_scale = Vector3(1, 1, 1);
+                        for (int i = 0 ; i < 3; ++i) {
+                            if (root_motion_lock_scale & 1<<i) {
+                                t->scale[i] = t->init_scale[i];
+                            } else {
+                                // t->scale_delta[i] = 1;
+                                root_motion_cache.scale[i] = 1;
+                            }
+                        }
+
+                        // root_motion_position = t->loc_delta;
+                        // root_motion_rotation = t->rot_delta;
+                        // root_motion_scale = t->scale_delta - Vector3(1, 1, 1);
+                        root_motion_position = root_motion_cache.loc;
+                        root_motion_rotation = root_motion_cache.rot;
+                        root_motion_scale = root_motion_cache.scale - Vector3(1, 1, 1);
 						root_motion_position_accumulator = t->loc;
 						root_motion_rotation_accumulator = t->rot;
 						root_motion_scale_accumulator = t->scale;
-					} else if (t->skeleton && t->bone_idx >= 0) {
+                    }
+
+                    if (t->skeleton && t->bone_idx >= 0) {
+					// } else if (t->skeleton && t->bone_idx >= 0) {
 						if (t->loc_used) {
 							t->skeleton->set_bone_pose_position(t->bone_idx, t->loc);
 						}
@@ -1995,6 +2076,30 @@ NodePath AnimationTree::get_root_motion_track() const {
 	return root_motion_track;
 }
 
+void AnimationTree::set_root_motion_lock_position(RootMotionLockAxis p_axis) {
+    root_motion_lock_position = p_axis;
+}
+
+AnimationTree::RootMotionLockAxis AnimationTree::get_root_motion_lock_position() const {
+    return root_motion_lock_position;
+}
+
+void AnimationTree::set_root_motion_lock_rotation(RootMotionLockAxis p_axis) {
+    root_motion_lock_rotation = p_axis;
+}
+
+AnimationTree::RootMotionLockAxis AnimationTree::get_root_motion_lock_rotation() const {
+    return root_motion_lock_rotation;
+}
+
+void AnimationTree::set_root_motion_lock_scale(RootMotionLockAxis p_axis) {
+    root_motion_lock_scale = p_axis;
+}
+
+AnimationTree::RootMotionLockAxis AnimationTree::get_root_motion_lock_scale() const {
+    return root_motion_lock_scale;
+}
+
 Vector3 AnimationTree::get_root_motion_position() const {
 	return root_motion_position;
 }
@@ -2202,6 +2307,15 @@ void AnimationTree::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_root_motion_track", "path"), &AnimationTree::set_root_motion_track);
 	ClassDB::bind_method(D_METHOD("get_root_motion_track"), &AnimationTree::get_root_motion_track);
 
+    ClassDB::bind_method(D_METHOD("set_root_motion_lock_position", "axis"), &AnimationTree::set_root_motion_lock_position);
+    ClassDB::bind_method(D_METHOD("get_root_motion_lock_position"), &AnimationTree::get_root_motion_lock_position);
+
+    ClassDB::bind_method(D_METHOD("set_root_motion_lock_rotation", "axis"), &AnimationTree::set_root_motion_lock_rotation);
+    ClassDB::bind_method(D_METHOD("get_root_motion_lock_rotation"), &AnimationTree::get_root_motion_lock_rotation);
+
+    ClassDB::bind_method(D_METHOD("set_root_motion_lock_scale", "axis"), &AnimationTree::set_root_motion_lock_scale);
+    ClassDB::bind_method(D_METHOD("get_root_motion_lock_scale"), &AnimationTree::get_root_motion_lock_scale);
+
 	ClassDB::bind_method(D_METHOD("set_audio_max_polyphony", "max_polyphony"), &AnimationTree::set_audio_max_polyphony);
 	ClassDB::bind_method(D_METHOD("get_audio_max_polyphony"), &AnimationTree::get_audio_max_polyphony);
 
@@ -2228,10 +2342,22 @@ void AnimationTree::_bind_methods() {
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "audio_max_polyphony", PROPERTY_HINT_RANGE, "1,127,1"), "set_audio_max_polyphony", "get_audio_max_polyphony");
 	ADD_GROUP("Root Motion", "root_motion_");
 	ADD_PROPERTY(PropertyInfo(Variant::NODE_PATH, "root_motion_track"), "set_root_motion_track", "get_root_motion_track");
+    ADD_PROPERTY(PropertyInfo(Variant::INT, "root_motion_lock_position", PROPERTY_HINT_ENUM, "None,X,Y,Z:4,XY:3,XZ:5,YZ:6,XYZ:7"), "set_root_motion_lock_position", "get_root_motion_lock_position");
+    ADD_PROPERTY(PropertyInfo(Variant::INT, "root_motion_lock_rotation", PROPERTY_HINT_ENUM, "None,X,Y,Z:4,XY:3,XZ:5,YZ:6,XYZ:7"), "set_root_motion_lock_rotation", "get_root_motion_lock_rotation");
+    ADD_PROPERTY(PropertyInfo(Variant::INT, "root_motion_lock_scale", PROPERTY_HINT_ENUM, "None,X,Y,Z:4,XY:3,XZ:5,YZ:6,XYZ:7"), "set_root_motion_lock_scale", "get_root_motion_lock_scale");
 
 	BIND_ENUM_CONSTANT(ANIMATION_PROCESS_PHYSICS);
 	BIND_ENUM_CONSTANT(ANIMATION_PROCESS_IDLE);
 	BIND_ENUM_CONSTANT(ANIMATION_PROCESS_MANUAL);
+    
+    BIND_ENUM_CONSTANT(LOCK_NONE);
+    BIND_ENUM_CONSTANT(LOCK_X);
+    BIND_ENUM_CONSTANT(LOCK_Y);
+    BIND_ENUM_CONSTANT(LOCK_XY);
+    BIND_ENUM_CONSTANT(LOCK_Z);
+    BIND_ENUM_CONSTANT(LOCK_XZ);
+    BIND_ENUM_CONSTANT(LOCK_YZ);
+    BIND_ENUM_CONSTANT(LOCK_XYZ);
 
 	ADD_SIGNAL(MethodInfo("animation_player_changed"));
 
