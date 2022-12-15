@@ -194,6 +194,17 @@ public:
 		ANIMATION_PROCESS_MANUAL,
 	};
 
+    enum RootMotionLockAxis {
+        LOCK_NONE,
+        LOCK_X,
+        LOCK_Y,
+        LOCK_XY,
+        LOCK_Z,
+        LOCK_XZ,
+        LOCK_YZ,
+        LOCK_XYZ,
+    };
+
 private:
 	struct TrackCache {
 		bool root_motion = false;
@@ -228,6 +239,12 @@ private:
 		}
 	};
 
+    struct TrackCacheTransformRoot : public TrackCacheTransform {
+        Vector3 loc_delta;
+        Quaternion rot_delta;
+        Vector3 scale_delta;
+    };
+ 
 	struct RootMotionCache {
 		Vector3 loc = Vector3(0, 0, 0);
 		Quaternion rot = Quaternion(0, 0, 0, 1);
@@ -331,6 +348,9 @@ private:
 	bool started = true;
 
 	NodePath root_motion_track;
+    RootMotionLockAxis root_motion_lock_position = LOCK_NONE;
+    RootMotionLockAxis root_motion_lock_rotation = LOCK_NONE;
+    RootMotionLockAxis root_motion_lock_scale = LOCK_NONE;
 	Vector3 root_motion_position = Vector3(0, 0, 0);
 	Quaternion root_motion_rotation = Quaternion(0, 0, 0, 1);
 	Vector3 root_motion_scale = Vector3(0, 0, 0);
@@ -399,6 +419,15 @@ public:
 
 	void set_root_motion_track(const NodePath &p_track);
 	NodePath get_root_motion_track() const;
+    
+    void set_root_motion_lock_position(RootMotionLockAxis p_axis);
+    RootMotionLockAxis get_root_motion_lock_position() const;
+
+    void set_root_motion_lock_rotation(RootMotionLockAxis p_axis);
+    RootMotionLockAxis get_root_motion_lock_rotation() const;
+
+    void set_root_motion_lock_scale(RootMotionLockAxis p_axis);
+    RootMotionLockAxis get_root_motion_lock_scale() const;
 
 	Vector3 get_root_motion_position() const;
 	Quaternion get_root_motion_rotation() const;
@@ -417,5 +446,6 @@ public:
 };
 
 VARIANT_ENUM_CAST(AnimationTree::AnimationProcessCallback)
+VARIANT_ENUM_CAST(AnimationTree::RootMotionLockAxis)
 
 #endif // ANIMATION_TREE_H
