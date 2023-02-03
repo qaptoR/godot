@@ -264,9 +264,9 @@
 		</method>
 	</methods>
 	<members>
-		<member name="basis" type="Basis" setter="set_basis" getter="get_basis">
-			Direct access to the 3x3 basis of the [Transform3D] property.
-		</member>
+        <member name="global_basis" type="Basis" setter="set_global_basis" getter="get_global_basis">
+            Direct access to the 3x3 basis of the global [Transform3D] property.
+        </member>
 		<member name="global_position" type="Vector3" setter="set_global_position" getter="get_global_position">
 			Global position of this node. This is equivalent to [code]global_transform.origin[/code].
 		</member>
@@ -279,6 +279,9 @@
 		</member>
 		<member name="global_transform" type="Transform3D" setter="set_global_transform" getter="get_global_transform">
 			World3D space (global) [Transform3D] of this node.
+		</member>
+		<member name="basis" type="Basis" setter="set_basis" getter="get_basis">
+			Direct access to the 3x3 basis of the local [Transform3D] property.
 		</member>
 		<member name="position" type="Vector3" setter="set_position" getter="get_position" default="Vector3(0, 0, 0)">
 			Local position or translation of this node relative to the parent. This is equivalent to [code]transform.origin[/code].

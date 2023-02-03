@@ -219,6 +219,11 @@ void Node3D::_notification(int p_what) {
 void Node3D::set_basis(const Basis &p_basis) {
 	set_transform(Transform3D(p_basis, data.local_transform.origin));
 }
+
+void Node3D::set_global_basis(const Basis &p_basis) {
+    set_global_transform(Transform3D(p_basis, data.global_transform.origin));
+}
+
 void Node3D::set_quaternion(const Quaternion &p_quaternion) {
 	if (data.dirty & DIRTY_EULER_ROTATION_AND_SCALE) {
 		// We need the scale part, so if these are dirty, update it
@@ -279,6 +284,10 @@ void Node3D::set_transform(const Transform3D &p_transform) {
 
 Basis Node3D::get_basis() const {
 	return get_transform().basis;
+}
+
+Basis Node3D::get_global_basis() const {
+    return get_global_transform().basis;
 }
 
 Quaternion Node3D::get_quaternion() const {
@@ -1009,6 +1018,8 @@ void Node3D::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_global_rotation"), &Node3D::get_global_rotation);
 	ClassDB::bind_method(D_METHOD("set_global_rotation_degrees", "euler_degrees"), &Node3D::set_global_rotation_degrees);
 	ClassDB::bind_method(D_METHOD("get_global_rotation_degrees"), &Node3D::get_global_rotation_degrees);
+    ClassDB::bind_method(D_METHOD("set_global_basis", "basis"), &Node3D::set_global_basis);
+    ClassDB::bind_method(D_METHOD("get_global_basis"), &Node3D::get_global_basis);
 
 	ClassDB::bind_method(D_METHOD("get_parent_node_3d"), &Node3D::get_parent_node_3d);
 	ClassDB::bind_method(D_METHOD("set_ignore_transform_notification", "enabled"), &Node3D::set_ignore_transform_notification);
@@ -1074,8 +1085,8 @@ void Node3D::_bind_methods() {
 
 	ADD_GROUP("Transform", "");
 	ADD_PROPERTY(PropertyInfo(Variant::TRANSFORM3D, "transform", PROPERTY_HINT_NONE, "suffix:m", PROPERTY_USAGE_NO_EDITOR), "set_transform", "get_transform");
-	ADD_PROPERTY(PropertyInfo(Variant::TRANSFORM3D, "global_transform", PROPERTY_HINT_NONE, "suffix:m", PROPERTY_USAGE_NONE), "set_global_transform", "get_global_transform");
-	ADD_PROPERTY(PropertyInfo(Variant::VECTOR3, "position", PROPERTY_HINT_RANGE, "-99999,99999,0.001,or_greater,or_less,hide_slider,suffix:m", PROPERTY_USAGE_EDITOR), "set_position", "get_position");
+	ADD_PROPERTY(PropertyInfo(Variant::TRANSFORM3D, "global_transform", PROPERTY_HINT_NONE, "suffix:m", PROPERTY_USAGE_NONE), "set_global_basis", "get_global_transform");
+	ADD_PROPERTY(PropertyInfo(Variant::VECTOR3, "position", PROPERTY_HINT_RANGE, "-99999,99999,0.001,or_greater,or_less,hide_slidbasis:m", PROPERTY_USAGE_EDITOR), "set_position", "get_position");
 	ADD_PROPERTY(PropertyInfo(Variant::VECTOR3, "rotation", PROPERTY_HINT_RANGE, "-360,360,0.1,or_less,or_greater,radians", PROPERTY_USAGE_EDITOR), "set_rotation", "get_rotation");
 	ADD_PROPERTY(PropertyInfo(Variant::VECTOR3, "rotation_degrees", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_NONE), "set_rotation_degrees", "get_rotation_degrees");
 	ADD_PROPERTY(PropertyInfo(Variant::QUATERNION, "quaternion", PROPERTY_HINT_HIDE_QUATERNION_EDIT, "", PROPERTY_USAGE_EDITOR), "set_quaternion", "get_quaternion");
@@ -1088,6 +1099,8 @@ void Node3D::_bind_methods() {
 	ADD_PROPERTY(PropertyInfo(Variant::VECTOR3, "global_position", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_NONE), "set_global_position", "get_global_position");
 	ADD_PROPERTY(PropertyInfo(Variant::VECTOR3, "global_rotation", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_NONE), "set_global_rotation", "get_global_rotation");
 	ADD_PROPERTY(PropertyInfo(Variant::VECTOR3, "global_rotation_degrees", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_NONE), "set_global_rotation_degrees", "get_global_rotation_degrees");
+    ADD_PROPERTY(PropertyInfo(Variant::BASIS, "global_basis", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_NONE), "set_global_basis", "get_global_basis");
+
 	ADD_GROUP("Visibility", "");
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "visible"), "set_visible", "is_visible");
 	ADD_PROPERTY(PropertyInfo(Variant::NODE_PATH, "visibility_parent", PROPERTY_HINT_NODE_PATH_VALID_TYPES, "GeometryInstance3D"), "set_visibility_parent", "get_visibility_parent");
